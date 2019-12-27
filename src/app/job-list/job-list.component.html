@@ -1,0 +1,22 @@
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Post Date</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let job of jobs">
+        <td>{{ job.jobId }}</td>
+        <td>{{ job.title }}</td>
+        <td>{{ job.description }}</td>
+        <td>{{ job.postDate }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

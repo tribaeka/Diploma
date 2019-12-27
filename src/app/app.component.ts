@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Diploma';
+  appTitle: string;
+
+  constructor() {
+    this.appTitle = 'Spring Boot - Angular Application';
+  }
 }
