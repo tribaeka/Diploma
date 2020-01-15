@@ -5,6 +5,7 @@ import {JobFormComponent} from './job-form/job-form.component';
 
 
 const routes: Routes = [
+  { path: '', redirectTo: '/jobs', pathMatch: 'full' },
   { path: 'jobs', component: JobListComponent },
   { path: 'addJob', component: JobFormComponent }
 ];
@@ -14,3 +15,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+export const routingComponents = [JobListComponent, JobFormComponent];

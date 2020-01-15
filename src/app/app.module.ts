@@ -1,19 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { JobListComponent } from './job-list/job-list.component';
-import { JobFormComponent } from './job-form/job-form.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import {JobService} from './job.service';
+import {JobService} from './services/job-service/job.service';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    JobListComponent,
-    JobFormComponent
+    HeaderComponent,
+    FooterComponent,
+    routingComponents
   ],
   imports: [
     BrowserModule,

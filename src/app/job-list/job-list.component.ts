@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Job} from '../job';
-import {JobService} from '../job.service';
+import {Job} from '../services/job-service/job';
+import {JobService} from '../services/job-service/job.service';
 
 @Component({
   selector: 'app-job-list',
@@ -14,7 +14,7 @@ export class JobListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.jobService.findAll().subscribe(data => {
+    this.jobService.getAllJobs().subscribe(data => {
       this.jobs = data;
     });
   }

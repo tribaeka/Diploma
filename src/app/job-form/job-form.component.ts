@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {Job} from '../job';
+import {Job} from '../services/job-service/job';
 import {ActivatedRoute, Router} from '@angular/router';
-import {JobService} from '../job.service';
+import {JobService} from '../services/job-service/job.service';
 
 @Component({
   selector: 'app-job-form',
