@@ -6,4 +6,5 @@ export class Company {
   siteUrl: string;
   size: string;
   contactSet: Contact[];
+  logoPath: string;
 }

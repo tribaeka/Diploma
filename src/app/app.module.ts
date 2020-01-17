@@ -10,6 +10,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { JobListItemComponent } from './job-list-item/job-list-item.component';
 import { JobDetailsComponent } from './job-details/job-details.component';
+import { CompanySideBarComponent } from './company-side-bar/company-side-bar.component';
+import { LocationBadgeComponent } from './location-badge/location-badge.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { JobDetailsComponent } from './job-details/job-details.component';
     FooterComponent,
     routingComponents,
     JobListItemComponent,
-    JobDetailsComponent
+    JobDetailsComponent,
+    CompanySideBarComponent,
+    LocationBadgeComponent
   ],
   imports: [
     BrowserModule,
