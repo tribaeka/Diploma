@@ -1,15 +1,18 @@
+$searchFormComponentsHeight: 50px;
+
 .search-form {
 
   .search-input {
     width: 600px;
-    height: 50px;
+    height: $searchFormComponentsHeight;
     border-top-right-radius: 0!important;
     border-bottom-right-radius: 0!important;
   }
 
   .search-btn {
-    height: 50px;
+    height: $searchFormComponentsHeight;
     border-top-left-radius: 0!important;
     border-bottom-left-radius: 0!important;
+    margin-bottom: 2px;
   }
 }

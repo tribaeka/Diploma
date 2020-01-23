@@ -14,6 +14,6 @@ export class JobSearchComponent implements OnInit {
   }
 
   startSearch(searchForm) {
-    this.router.navigate(['/search/job/', ]);
+    this.router.navigate(['search/job/', searchForm.query]);
   }
 }
