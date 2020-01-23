@@ -8,10 +8,11 @@ import {HttpClientModule} from '@angular/common/http';
 import {JobService} from './services/job.service';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { JobListItemComponent } from './job-list-item/job-list-item.component';
-import { JobDetailsComponent } from './job-details/job-details.component';
 import { CompanySideBarComponent } from './company-side-bar/company-side-bar.component';
 import { LocationBadgeComponent } from './location-badge/location-badge.component';
+import {JobListItemComponent} from './job-list-item/job-list-item.component';
+import { JobSearchComponent } from './job-search/job-search.component';
+import { SkillSetComponent } from './skill-set/skill-set.component';
 
 @NgModule({
   declarations: [
@@ -20,9 +21,10 @@ import { LocationBadgeComponent } from './location-badge/location-badge.componen
     FooterComponent,
     routingComponents,
     JobListItemComponent,
-    JobDetailsComponent,
     CompanySideBarComponent,
-    LocationBadgeComponent
+    LocationBadgeComponent,
+    JobSearchComponent,
+    SkillSetComponent
   ],
   imports: [
     BrowserModule,

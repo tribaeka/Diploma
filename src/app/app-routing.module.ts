@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {JobListComponent} from './job-list/job-list.component';
 import {JobDetailsComponent} from './job-details/job-details.component';
+import {HomeComponent} from './home/home.component';
+import {JobSearchResultsComponent} from './job-search-results/job-search-results.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/jobs', pathMatch: 'full' },
-  { path: 'jobs', component: JobListComponent },
-  { path: 'job/:id', component: JobDetailsComponent }
+  { path: '', component: HomeComponent },
+  { path: 'search/job/:query', component: JobSearchResultsComponent },
+  { path: 'job/:id', component: JobDetailsComponent },
   ];
 
 @NgModule({
@@ -15,4 +17,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [JobListComponent, JobDetailsComponent ];
+export const routingComponents = [JobSearchResultsComponent, JobListComponent, JobDetailsComponent, HomeComponent ];

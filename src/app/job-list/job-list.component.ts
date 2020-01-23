@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {JobService} from '../services/job.service';
 import {Job} from '../model/job';
 
@@ -8,15 +8,11 @@ import {Job} from '../model/job';
   styleUrls: ['./job-list.component.scss']
 })
 export class JobListComponent implements OnInit {
-  jobs: Job[];
+  @Input() jobs: Job[];
 
-  constructor(private jobService: JobService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.jobService.getAllJobs()
-      .subscribe(data => {
-        this.jobs = data;
-      });
   }
 }
