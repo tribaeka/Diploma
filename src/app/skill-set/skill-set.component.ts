@@ -8,9 +8,13 @@ import {Skill} from '../model/skill';
 })
 export class SkillSetComponent implements OnInit {
   @Input() skills: Skill[];
+  @Input() isActiveSkillSet: boolean;
   constructor() { }
 
   ngOnInit() {
   }
 
+  skillClickHandler(skill: Skill) {
+
+  }
 }

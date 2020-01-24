@@ -1,0 +1,24 @@
+$searchFormComponentsHeight: 50px;
+
+.search-form {
+
+  .search-input-wrapper{
+    .x-icon {
+      margin-left: 560px;
+    }
+
+    .search-input {
+      width: 600px;
+      height: $searchFormComponentsHeight;
+      border-top-right-radius: 0!important;
+      border-bottom-right-radius: 0!important;
+    }
+  }
+
+  .search-btn {
+    height: $searchFormComponentsHeight;
+    border-top-left-radius: 0!important;
+    border-bottom-left-radius: 0!important;
+    margin-bottom: 2px;
+  }
+}

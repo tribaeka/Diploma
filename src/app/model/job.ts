@@ -10,4 +10,5 @@ export interface Job {
   jobSkillSet: Skill[];
   postDate: string;
   companiesJob: Company;
+  salary: number;
 }

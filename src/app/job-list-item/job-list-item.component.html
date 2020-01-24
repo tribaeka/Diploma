@@ -7,11 +7,14 @@
         </a>
         <span class="card-job-company card-subtitle text-muted">{{ job.companiesJob.name }}</span>
       </h4>
-      <app-skill-set [skills]="job.jobSkillSet"></app-skill-set>
+      <app-skill-set [isActiveSkillSet]="false" [skills]="job.jobSkillSet"></app-skill-set>
     </div>
     <div class="text-right">
-      <app-location-badge [location]="job.location"></app-location-badge>
-      <span class="d-block text-muted">{{ job.postDate }}</span>
+      <h6>
+        <app-location-badge [location]="job.location"></app-location-badge>
+        <span class="d-block text-muted">{{ job.postDate }}</span>
+      </h6>
+      <h5 class="mb-0">{{ job.salary }}$</h5>
     </div>
   </div>
 </div>

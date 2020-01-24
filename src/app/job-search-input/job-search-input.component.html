@@ -1,0 +1,23 @@
+<form class="search-form"
+      [formGroup]="searchForm"
+      (ngSubmit)="startSearch(searchForm.value)">
+  <div class="form-group">
+    <div class="search-input-wrapper d-inline-block">
+      <img class="position-absolute my-2 x-icon"
+           [src]="activePath"
+           (mouseenter)="mouseEnterHandler()"
+           (mouseleave)="mouseLeaveHandler()"
+           (click)="clickHandler()"
+           width="30"
+           height="30"
+           alt="">
+      <input class="search-input form-control d-inline-block"
+             type="text"
+             formControlName="query"
+             value="{{query}}"
+             (ngModelChange)="onInputChangeHandler(searchForm.value.query)"
+             placeholder="Enter job, skill, company or location">
+    </div>
+    <button class="btn btn-primary search-btn" type="submit">Search</button>
+  </div>
+</form>
