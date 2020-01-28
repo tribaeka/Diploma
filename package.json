@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "npm run copy-libs",
-    "copy-libs": "cpx \"node_modules/{bootstrap-icons}/**/*\" src/lib -C"
+    "copy-libs": "cpx \"node_modules/{bootstrap,bootstrap-icons,jquery}/**/*\" src/lib -C"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +26,7 @@
     "bootstrap": "^4.4.1",
     "bootstrap-icons": "^1.0.0-alpha2",
     "cpx": "^1.5.0",
+    "jquery": "^3.4.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

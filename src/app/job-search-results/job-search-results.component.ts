@@ -10,13 +10,24 @@ import {Job} from '../model/job';
 })
 export class JobSearchResultsComponent implements OnInit {
   query: string;
+  initResults: Job[];
   results: Job[];
-  constructor(private route: ActivatedRoute, private searchService: SearchService) { }
+  isLoading: boolean;
+
+  constructor(private route: ActivatedRoute, private searchService: SearchService) {
+    this.isLoading = true;
+  }
 
   ngOnInit() {
     this.query = this.route.snapshot.paramMap.get('query');
     this.searchService.executeJobSearch(this.query)
-      .subscribe(data => this.results = data);
+      .subscribe(data => {
+        this.initResults = this.results = data;
+        this.isLoading = false;
+      });
   }
 
+  updateResults(jobs: Job[]) {
+    this.results = jobs;
+  }
 }

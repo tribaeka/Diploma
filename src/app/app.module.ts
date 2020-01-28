@@ -13,6 +13,9 @@ import { LocationBadgeComponent } from './location-badge/location-badge.componen
 import {JobListItemComponent} from './job-list-item/job-list-item.component';
 import { JobSearchInputComponent } from './job-search-input/job-search-input.component';
 import { SkillSetComponent } from './skill-set/skill-set.component';
+import { JobFilterComponent } from './job-filter/job-filter.component';
+import { SalaryFilterComponent } from './salary-filter/salary-filter.component';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { SkillSetComponent } from './skill-set/skill-set.component';
     CompanySideBarComponent,
     LocationBadgeComponent,
     JobSearchInputComponent,
-    SkillSetComponent
+    SkillSetComponent,
+    JobFilterComponent,
+    SalaryFilterComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
