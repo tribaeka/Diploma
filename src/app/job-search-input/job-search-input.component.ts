@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
@@ -10,9 +10,12 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 export class JobSearchInputComponent implements OnInit {
   searchForm: FormGroup;
   query: string;
-  private xIconPath: string;
-  private xFilledIconPath: string;
+  private readonly xIconPath: string;
+  private readonly xFilledIconPath: string;
   activePath: string;
+  showDropDown: boolean;
+  activeOption: string;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -21,12 +24,12 @@ export class JobSearchInputComponent implements OnInit {
     this.searchForm = builder.group({
       query: ''
     });
-  }
-
-  ngOnInit() {
-    this.query = this.route.snapshot.paramMap.get('query');
     this.xIconPath = '../../assets/icons/x-circle.svg';
     this.xFilledIconPath = '../../assets/icons/x-circle-fill.svg';
+  }
+  options = ['Java', 'JavaScript', 'Docker', 'Angular', 'AngularJS'];
+  ngOnInit() {
+    this.query = this.route.snapshot.paramMap.get('query');
     this.activePath = this.xIconPath;
   }
 
@@ -45,7 +48,19 @@ export class JobSearchInputComponent implements OnInit {
     this.activePath = this.xIconPath;
   }
 
-  clickHandler() {
+  clearInput() {
     this.query = '';
+  }
+
+  openDropDown() {
+    this.showDropDown = true;
+  }
+
+  closeDropDown() {
+    this.showDropDown = false;
+  }
+
+  setActiveOption(option: string) {
+    this.activeOption = option;
   }
 }

@@ -16,6 +16,8 @@ import { SkillSetComponent } from './skill-set/skill-set.component';
 import { JobFilterComponent } from './job-filter/job-filter.component';
 import { SalaryFilterComponent } from './salary-filter/salary-filter.component';
 import { LoaderComponent } from './loader/loader.component';
+import { AutocompleteFilterPipe } from './autocomplete-filter.pipe';
+import { AutocompleteBoldLetterPipe } from './autocomplete-bold-letter.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { LoaderComponent } from './loader/loader.component';
     SkillSetComponent,
     JobFilterComponent,
     SalaryFilterComponent,
-    LoaderComponent
+    LoaderComponent,
+    AutocompleteFilterPipe,
+    AutocompleteBoldLetterPipe
   ],
   imports: [
     BrowserModule,
