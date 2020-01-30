@@ -4,8 +4,15 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'autocompleteBoldLetter'
 })
 export class AutocompleteBoldLetterPipe implements PipeTransform {
-  transform(value: any, search: any): any {
+  transform(value: string, search: string): any {
     if (!search) { return value; }
+    if (search.includes(' ')) {
+      const searchArray = search.split(' ');
+      const lastWord = searchArray[searchArray.length - 1];
+      if (lastWord !== '') {
+        search = lastWord;
+      }
+    }
     const searchLength = search.length;
     const  holder = value.split('');
     let indexAdder = 0;

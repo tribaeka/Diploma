@@ -10,6 +10,7 @@ export class AutocompleteFilterPipe implements PipeTransform {
       if (!v) {
         return;
       }
+      search = search.includes(' ') ? search.split(' ').pop() : search;
       return v.toLowerCase().indexOf(search.toLowerCase()) !== -1;
     });
   }

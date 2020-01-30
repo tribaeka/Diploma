@@ -33,11 +33,23 @@ export class JobSearchInputComponent implements OnInit {
     this.activePath = this.xIconPath;
   }
 
-  onInputChangeHandler(inputValue: string) {
+  updateQueryOnChange(inputValue: string) {
     this.query = inputValue;
   }
-  startSearch(searchForm) {
-    this.router.navigate(['search/job/', searchForm.query]);
+
+  updateQueryOnSelectOption(option: string) {
+    if (this.query === null || !this.query.includes(' ')) {
+      this.query = option + ' ';
+    } else {
+      const queryArray = this.query.split(' ');
+      queryArray[queryArray.length - 1] = option;
+      console.log(queryArray.join(' '));
+      this.query = queryArray.join(' ') + ' ';
+    }
+  }
+
+  startSearch() {
+    this.router.navigate(['search/job/', this.query]);
   }
 
   mouseEnterHandler() {

@@ -18,6 +18,7 @@ import { SalaryFilterComponent } from './salary-filter/salary-filter.component';
 import { LoaderComponent } from './loader/loader.component';
 import { AutocompleteFilterPipe } from './autocomplete-filter.pipe';
 import { AutocompleteBoldLetterPipe } from './autocomplete-bold-letter.pipe';
+import { ClickOutsideModule} from 'ng-click-outside';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { AutocompleteBoldLetterPipe } from './autocomplete-bold-letter.pipe';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ClickOutsideModule
   ],
   providers: [
     JobService
