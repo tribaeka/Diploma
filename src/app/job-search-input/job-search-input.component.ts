@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {ResourceService} from '../services/resource.service';
+import {log} from 'util';
 
 @Component({
   selector: 'app-job-search-input',
@@ -15,19 +17,22 @@ export class JobSearchInputComponent implements OnInit {
   activePath: string;
   showDropDown: boolean;
   activeOption: string;
+  options: string[];
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private builder: FormBuilder
+    private builder: FormBuilder,
+    private resourceService: ResourceService
   ) {
     this.searchForm = builder.group({
       query: ''
     });
     this.xIconPath = '../../assets/icons/x-circle.svg';
     this.xFilledIconPath = '../../assets/icons/x-circle-fill.svg';
+    resourceService.getAutocompleteDictionary().subscribe(data => this.options = data);
   }
-  options = ['Java', 'JavaScript', 'Docker', 'Angular', 'AngularJS'];
+
   ngOnInit() {
     this.query = this.route.snapshot.paramMap.get('query');
     this.activePath = this.xIconPath;
