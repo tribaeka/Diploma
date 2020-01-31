@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ResourceService} from '../services/resource.service';
 import {log} from 'util';
+import {DataTransferService} from '../services/data-transfer.service';
 
 @Component({
   selector: 'app-job-search-input',
@@ -12,6 +13,7 @@ import {log} from 'util';
 export class JobSearchInputComponent implements OnInit {
   searchForm: FormGroup;
   query: string;
+  subQuery: string;
   private readonly xIconPath: string;
   private readonly xFilledIconPath: string;
   activePath: string;
@@ -23,7 +25,8 @@ export class JobSearchInputComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private builder: FormBuilder,
-    private resourceService: ResourceService
+    private resourceService: ResourceService,
+    private dataTransferService: DataTransferService
   ) {
     this.searchForm = builder.group({
       query: ''
@@ -36,6 +39,7 @@ export class JobSearchInputComponent implements OnInit {
   ngOnInit() {
     this.query = this.route.snapshot.paramMap.get('query');
     this.activePath = this.xIconPath;
+    this.dataTransferService.currentSubQuery.subscribe(subQuery => this.subQuery = subQuery);
   }
 
   updateQueryOnChange(inputValue: string) {

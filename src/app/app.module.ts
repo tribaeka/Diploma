@@ -16,8 +16,8 @@ import { SkillSetComponent } from './skill-set/skill-set.component';
 import { JobFilterComponent } from './job-filter/job-filter.component';
 import { SalaryFilterComponent } from './salary-filter/salary-filter.component';
 import { LoaderComponent } from './loader/loader.component';
-import { AutocompleteFilterPipe } from './autocomplete-filter.pipe';
-import { AutocompleteBoldLetterPipe } from './autocomplete-bold-letter.pipe';
+import { AutocompleteFilterPipe } from './pipes/autocomplete-filter.pipe';
+import { AutocompleteBoldLetterPipe } from './pipes/autocomplete-bold-letter.pipe';
 import { ClickOutsideModule} from 'ng-click-outside';
 import { TypeFilterComponent } from './type-filter/type-filter.component';
 

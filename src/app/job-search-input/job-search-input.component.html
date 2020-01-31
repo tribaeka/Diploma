@@ -15,7 +15,7 @@
       <input class="search-input form-control d-inline-block"
              type="text"
              formControlName="query"
-             value="{{query}}"
+             value="{{query + subQuery}}"
              #searchInput
              (ngModelChange)="updateQueryOnChange(searchForm.value.query)"
              (focus)="openDropDown()"
