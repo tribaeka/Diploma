@@ -28,8 +28,4 @@ export class TypeFilterComponent implements OnInit, JobFilter {
       case 'Local': return jobs.filter((item: Job) => item.location.name !== 'Remote');
     }
   }
-
-  reset() {
-    this.onResetTypeFilter.emit();
-  }
 }
