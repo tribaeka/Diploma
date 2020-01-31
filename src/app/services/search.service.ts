@@ -9,10 +9,10 @@ import {Observable} from 'rxjs';
 export class SearchService {
   private readonly jobSearchUrl: string;
   constructor(private http: HttpClient) {
-    this.jobSearchUrl = 'http://localhost:8080/job?query=';
+    this.jobSearchUrl = 'http://localhost:8080/job/search?query=';
   }
 
   executeJobSearch(query: string): Observable<Job[]> {
-    return this.http.get<Job[]>(this.jobSearchUrl + query);
+    return this.http.get<Job[]>(this.jobSearchUrl + encodeURIComponent(query));
   }
 }

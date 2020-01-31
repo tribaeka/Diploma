@@ -10,10 +10,10 @@
     </div>
   </div>
   <div class="row" *ngIf="!isLoading">
-    <div class="col-3 p-5">
+    <div class="col-4 my-5">
       <app-job-filter (onUpdateResults)="updateResults($event)" [jobs]="initResults"></app-job-filter>
     </div>
-    <div class="col-8 my-5">
+    <div class="col-7 my-5">
       <app-skill-set [isActiveSkillSet]="true"></app-skill-set>
       <app-job-list [jobs]="results"></app-job-list>
     </div>

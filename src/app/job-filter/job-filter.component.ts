@@ -19,4 +19,14 @@ export class JobFilterComponent implements OnInit {
   applySalaryFilter(filterValue: number) {
     this.onUpdateResults.emit(this.jobs.filter((item: Job) => item.salary >= filterValue));
   }
+
+  applyTypeFilter(isRemoteType: boolean) {
+    isRemoteType ?
+      this.onUpdateResults.emit(this.jobs.filter((item: Job) => item.location.name === 'Remote')) :
+      this.onUpdateResults.emit(this.jobs.filter((item: Job) => item.location.name !== 'Remote'));
+  }
+
+  resetTypeFilter() {
+    this.onUpdateResults.emit(this.jobs);
+  }
 }

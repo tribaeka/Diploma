@@ -19,6 +19,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { AutocompleteFilterPipe } from './autocomplete-filter.pipe';
 import { AutocompleteBoldLetterPipe } from './autocomplete-bold-letter.pipe';
 import { ClickOutsideModule} from 'ng-click-outside';
+import { TypeFilterComponent } from './type-filter/type-filter.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ClickOutsideModule} from 'ng-click-outside';
     SalaryFilterComponent,
     LoaderComponent,
     AutocompleteFilterPipe,
-    AutocompleteBoldLetterPipe
+    AutocompleteBoldLetterPipe,
+    TypeFilterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,23 @@
+<div class="row py-4">
+  <div class="col-12">
+    <h5 class="text-success text-center">By Remote</h5>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="type" id="allType" (click)="reset()" checked>
+      <label class="form-check-label" for="allType">
+        All
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="type" id="remoteType" (click)="applyTypeFilter(true)">
+      <label class="form-check-label" for="remoteType">
+        Remote
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="type" id="localType" (click)="applyTypeFilter(false)">
+      <label class="form-check-label" for="localType">
+        Local
+      </label>
+    </div>
+  </div>
+</div>

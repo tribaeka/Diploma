@@ -23,9 +23,9 @@ export class SalaryFilterComponent implements OnInit {
   }
 
   initSalaryFilterList(from: number, to: number) {
-    while (from < to) {
-      from += 250;
+    while (from <= to) {
       this.salaryFilterList.push(from);
+      from += 250;
     }
   }
 }

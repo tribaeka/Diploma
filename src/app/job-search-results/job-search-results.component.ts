@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, ParamMap} from '@angular/router';
 import {SearchService} from '../services/search.service';
 import {Job} from '../model/job';
 
@@ -9,7 +9,6 @@ import {Job} from '../model/job';
   styleUrls: ['./job-search-results.component.scss']
 })
 export class JobSearchResultsComponent implements OnInit {
-  query: string;
   initResults: Job[];
   results: Job[];
   isLoading: boolean;
@@ -19,12 +18,15 @@ export class JobSearchResultsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.query = this.route.snapshot.paramMap.get('query');
-    this.searchService.executeJobSearch(this.query)
-      .subscribe(data => {
-        this.initResults = this.results = data;
-        this.isLoading = false;
-      });
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.isLoading = true;
+      const query = params.get('query');
+      this.searchService.executeJobSearch(query)
+        .subscribe(data => {
+          this.initResults = this.results = data;
+          this.isLoading = false;
+        });
+    });
   }
 
   updateResults(jobs: Job[]) {

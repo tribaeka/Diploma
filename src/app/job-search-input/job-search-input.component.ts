@@ -48,7 +48,6 @@ export class JobSearchInputComponent implements OnInit {
     } else {
       const queryArray = this.query.split(' ');
       queryArray[queryArray.length - 1] = option;
-      console.log(queryArray.join(' '));
       this.query = queryArray.join(' ') + ' ';
     }
   }
