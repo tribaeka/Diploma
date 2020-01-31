@@ -1,13 +1,14 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Job} from '../model/job';
+import {JobFilter} from '../model/job-filter';
 
 @Component({
   selector: 'app-salary-filter',
   templateUrl: './salary-filter.component.html',
   styleUrls: ['./salary-filter.component.scss']
 })
-export class SalaryFilterComponent implements OnInit {
+export class SalaryFilterComponent implements OnInit, JobFilter {
   @Output() onApplySalaryFilter = new EventEmitter();
-  @Output() onResetSalaryFilter = new EventEmitter();
   salaryFilterList: number[] = [];
   selectedFilterValue: number;
 
@@ -20,9 +21,11 @@ export class SalaryFilterComponent implements OnInit {
 
   applySalaryFilter(salary: number) {
     this.selectedFilterValue = salary;
-    salary === 0 ?
-      this.onResetSalaryFilter.emit() :
-      this.onApplySalaryFilter.emit(salary);
+    this.onApplySalaryFilter.emit(this);
+  }
+
+  filter(jobs: Job[]): Job[] {
+    return jobs.filter((item: Job) => item.salary >= this.selectedFilterValue);
   }
 
   initSalaryFilterList(from: number, to: number) {

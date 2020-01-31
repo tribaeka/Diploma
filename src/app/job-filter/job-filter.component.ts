@@ -1,5 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Job} from '../model/job';
+import {SalaryFilterComponent} from '../salary-filter/salary-filter.component';
+import {TypeFilterComponent} from '../type-filter/type-filter.component';
+import {JobFilter} from '../model/job-filter';
 
 @Component({
   selector: 'app-job-filter',
@@ -9,28 +12,41 @@ import {Job} from '../model/job';
 export class JobFilterComponent implements OnInit {
   @Input() jobs: Job[];
   @Output() onUpdateResults = new EventEmitter();
-
+  activeFilters: Set<JobFilter>;
   constructor() {
+    this.activeFilters = new Set<JobFilter>();
   }
 
   ngOnInit() {
   }
 
-  applySalaryFilter(filterValue: number) {
-    this.onUpdateResults.emit(this.jobs.filter((item: Job) => item.salary >= filterValue));
+  apply() {
+    const results = [];
+    this.activeFilters.forEach((filter: JobFilter) => {
+      results.push(filter.filter(this.jobs));
+    });
+    this.onUpdateResults.emit(this.intersections(results));
   }
 
-  resetSalaryFilter() {
-    this.onUpdateResults.emit(this.jobs);
+  applySalaryFilter(filter: JobFilter) {
+    this.activeFilters.add(filter);
+    this.apply();
   }
 
-  applyTypeFilter(isRemoteType: boolean) {
-    isRemoteType ?
-      this.onUpdateResults.emit(this.jobs.filter((item: Job) => item.location.name === 'Remote')) :
-      this.onUpdateResults.emit(this.jobs.filter((item: Job) => item.location.name !== 'Remote'));
+  applyTypeFilter(filter: JobFilter) {
+    this.activeFilters.add(filter);
+    this.apply();
   }
 
-  resetTypeFilter() {
-    this.onUpdateResults.emit(this.jobs);
+  intersections(arrayOfArrays: [][]) {
+    return arrayOfArrays
+      .reduce((acc: object[], array: object[], index) => { // Intersect arrays
+        if (index === 0) {
+          return array;
+        }
+        return array.filter((value) => acc.includes(value));
+      }, [])
+      .filter((value, index, self) => self.indexOf(value) === index) // Make values unique
+      ;
   }
 }
