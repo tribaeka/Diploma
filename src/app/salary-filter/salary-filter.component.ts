@@ -7,6 +7,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class SalaryFilterComponent implements OnInit {
   @Output() onApplySalaryFilter = new EventEmitter();
+  @Output() onResetSalaryFilter = new EventEmitter();
   salaryFilterList: number[] = [];
   selectedFilterValue: number;
 
@@ -17,9 +18,11 @@ export class SalaryFilterComponent implements OnInit {
   ngOnInit() {
   }
 
-  applySalaryFilter(salary: any) {
+  applySalaryFilter(salary: number) {
     this.selectedFilterValue = salary;
-    this.onApplySalaryFilter.emit(salary);
+    salary === 0 ?
+      this.onResetSalaryFilter.emit() :
+      this.onApplySalaryFilter.emit(salary);
   }
 
   initSalaryFilterList(from: number, to: number) {
