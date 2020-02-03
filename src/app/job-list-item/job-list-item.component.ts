@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Job} from '../model/job';
-import {Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 
 @Component({
   selector: 'app-job-list-item',
@@ -9,9 +9,10 @@ import {Router} from '@angular/router';
 })
 export class JobListItemComponent implements OnInit {
   @Input() job: Job;
-
-  constructor() { }
+  query: string;
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.paramMap.subscribe((params: ParamMap) => this.query = params.get('query'));
   }
 }

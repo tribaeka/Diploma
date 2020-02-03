@@ -9,7 +9,7 @@ import {JobSearchResultsComponent} from './job-search-results/job-search-results
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'search/job/:query', component: JobSearchResultsComponent },
-  { path: 'job/:id', component: JobDetailsComponent },
+  { path: 'job/:id/:query', component: JobDetailsComponent },
   ];
 
 @NgModule({

@@ -2,7 +2,7 @@
   <div class="card-body d-flex justify-content-between">
     <div>
       <h4 class="card-title">
-        <a [routerLink]="['/job', job.jobId]">
+        <a [routerLink]="['/job', job.jobId, query]">
           {{ job.title }}
         </a>
         <span class="card-job-company card-subtitle text-muted">{{ job.companiesJob.name }}</span>
