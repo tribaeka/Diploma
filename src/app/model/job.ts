@@ -1,6 +1,7 @@
 import {Location} from './location';
 import {Skill} from './skill';
 import {Company} from './company';
+import {Experience} from './experience';
 
 export interface Job {
   jobId: number;
@@ -11,4 +12,5 @@ export interface Job {
   postDate: string;
   companiesJob: Company;
   salary: number;
+  experience: Experience;
 }

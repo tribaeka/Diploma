@@ -10,7 +10,6 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class JobDetailsComponent implements OnInit {
   job: Job;
-
   constructor(private jobService: JobService, private route: ActivatedRoute) { }
 
   ngOnInit() {

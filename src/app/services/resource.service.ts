@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Experience} from '../model/experience';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,9 @@ export class ResourceService {
 
   getAutocompleteDictionary(): Observable<string[]> {
     return this.http.get<string[]>(this.hostUrl + '/util/autocomplete');
+  }
+
+  getListOfExperiences(): Observable<Experience[]> {
+    return this.http.get<Experience[]>(this.hostUrl + '/util/experiences');
   }
 }

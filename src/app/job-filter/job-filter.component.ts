@@ -38,6 +38,11 @@ export class JobFilterComponent implements OnInit {
     this.apply();
   }
 
+  applyExperienceFilter(filter: JobFilter) {
+    this.activeFilters.add(filter);
+    this.apply();
+  }
+
   intersections(arrayOfArrays: [][]) {
     return arrayOfArrays
       .reduce((acc: object[], array: object[], index) => { // Intersect arrays
