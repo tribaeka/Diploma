@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ResourceService} from '../services/resource.service';
-import {log} from 'util';
 import {DataTransferService} from '../services/data-transfer.service';
 
 @Component({
@@ -20,6 +19,7 @@ export class JobSearchInputComponent implements OnInit {
   showDropDown: boolean;
   activeOption: string;
   options: string[];
+  @Input() isSubQueryEnabled: boolean;
 
   constructor(
     private router: Router,
@@ -42,8 +42,13 @@ export class JobSearchInputComponent implements OnInit {
     this.dataTransferService.currentSubQuery.subscribe(subQuery => this.subQuery = subQuery);
   }
 
+  getUnionQuery() {
+    if (this.isSubQueryEnabled) { return this.query + this.subQuery; } else { return this.query; }
+  }
+
   updateQueryOnChange(inputValue: string) {
     this.query = inputValue;
+    this.dataTransferService.changeSubQuery('');
   }
 
   updateQueryOnSelectOption(option: string) {
@@ -57,7 +62,7 @@ export class JobSearchInputComponent implements OnInit {
   }
 
   startSearch() {
-    this.router.navigate(['search/job/', this.query]);
+    this.router.navigate(['search/job/', this.getUnionQuery()]);
   }
 
   mouseEnterHandler() {
@@ -70,6 +75,7 @@ export class JobSearchInputComponent implements OnInit {
 
   clearInput() {
     this.query = '';
+    this.dataTransferService.changeSubQuery('');
   }
 
   openDropDown() {
