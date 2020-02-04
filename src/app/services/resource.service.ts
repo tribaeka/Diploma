@@ -23,4 +23,8 @@ export class ResourceService {
   getListOfExperiences(): Observable<Experience[]> {
     return this.http.get<Experience[]>(this.hostUrl + '/util/experiences');
   }
+
+  getPopularSearchBuilds(): Observable<Map<string, string>> {
+    return this.http.get<Map<string, string>>(this.hostUrl + '/util/search-builds');
+  }
 }

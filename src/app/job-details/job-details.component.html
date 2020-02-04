@@ -1,22 +1,25 @@
 <div class="container-fluid p-4"
      *ngIf="job">
   <div class=" px-4 border border-secondary rounded">
-    <div class="row">
-      <div class="col-12">
-        <div class="py-4">
+    <div class="row py-4">
+      <div class="col-10">
           <h2>{{job.title}}</h2>
           <app-location-badge [location]="job.location"></app-location-badge>
           <br>
           <span>Required experience: {{job.experience.name}}</span>
-        </div>
         <hr>
+      </div>
+      <div class="col-2 d-flex justify-content-end">
+        <div>
+          <button class="btn-lg btn-outline-success">To respond</button>
+        </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-8">
+      <div class="col-7">
         <div [innerHTML]="job.description"></div>
       </div>
-      <div class="col-4 my-4">
+      <div class="col-4 offset-1 my-4">
         <app-company-side-bar [company]="job.companiesJob"></app-company-side-bar>
       </div>
     </div>

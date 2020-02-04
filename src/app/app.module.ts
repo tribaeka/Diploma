@@ -22,6 +22,7 @@ import { ClickOutsideModule} from 'ng-click-outside';
 import { TypeFilterComponent } from './type-filter/type-filter.component';
 import { ExperienceFilterComponent } from './experience-filter/experience-filter.component';
 import { SimilarJobsComponent } from './similar-jobs/similar-jobs.component';
+import { SearchBuildsComponent } from './search-builds/search-builds.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { SimilarJobsComponent } from './similar-jobs/similar-jobs.component';
     AutocompleteBoldLetterPipe,
     TypeFilterComponent,
     ExperienceFilterComponent,
-    SimilarJobsComponent
+    SimilarJobsComponent,
+    SearchBuildsComponent
   ],
   imports: [
     BrowserModule,
