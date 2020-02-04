@@ -6,6 +6,8 @@ import {LocationBadgeComponent} from './location-badge/location-badge.component'
 import {SkillSetComponent} from './skill-set/skill-set.component';
 import {AutocompleteFilterPipe} from './pipes/autocomplete-filter.pipe';
 import {AutocompleteBoldLetterPipe} from './pipes/autocomplete-bold-letter.pipe';
+import {SearchBuildsComponent} from './search-builds/search-builds.component';
+import {AppRoutingModule} from '../app-routing.module';
 
 
 
@@ -16,7 +18,8 @@ import {AutocompleteBoldLetterPipe} from './pipes/autocomplete-bold-letter.pipe'
     LocationBadgeComponent,
     SkillSetComponent,
     AutocompleteFilterPipe,
-    AutocompleteBoldLetterPipe
+    AutocompleteBoldLetterPipe,
+    SearchBuildsComponent
   ],
   exports: [
     CompanySideBarComponent,
@@ -24,10 +27,12 @@ import {AutocompleteBoldLetterPipe} from './pipes/autocomplete-bold-letter.pipe'
     LocationBadgeComponent,
     SkillSetComponent,
     AutocompleteFilterPipe,
-    AutocompleteBoldLetterPipe
+    AutocompleteBoldLetterPipe,
+    SearchBuildsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AppRoutingModule
   ]
 })
 export class SharedModule { }

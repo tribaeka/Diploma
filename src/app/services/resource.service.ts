@@ -25,6 +25,6 @@ export class ResourceService {
   }
 
   getPopularSearchBuilds(): Observable<Map<string, string>> {
-    return this.http.get<Map<string, string>>(this.hostUrl + '/util/search-builds');
+    return this.http.get<Map<string, string>>(this.hostUrl + '/util/search-builds/job');
   }
 }

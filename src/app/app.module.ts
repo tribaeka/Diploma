@@ -10,13 +10,16 @@ import { ClickOutsideModule} from 'ng-click-outside';
 import {CvSideModule} from './cv-side/cv-side.module';
 import {JobSideModule} from './job-side/job-side.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HomeComponent } from './home/home.component';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HttpClientModule,
     ClickOutsideModule,
     CvSideModule,
-    JobSideModule
+    JobSideModule,
+    SharedModule
   ],
   providers: [
     AppRoutingModule

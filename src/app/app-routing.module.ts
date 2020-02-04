@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {JobDetailsComponent} from './job-side/job-details/job-details.component';
-import {JobHomeComponent} from './job-side/job-home/job-home.component';
 import {JobSearchResultsComponent} from './job-side/job-search-results/job-search-results.component';
-import {CvHomeComponent} from './cv-side/cv-home/cv-home.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import {HomeComponent} from './home/home.component';
 
 
 const routes: Routes = [
@@ -12,8 +11,8 @@ const routes: Routes = [
     redirectTo: '/job',
     pathMatch: 'full'
   },
-  { path: 'job', component: JobHomeComponent },
-  { path: 'cv', component: CvHomeComponent },
+  { path: 'job', component: HomeComponent, data: {side: 'job'} },
+  { path: 'cv', component: HomeComponent, data: {side: 'cv'} },
   { path: 'job/search/:query', component: JobSearchResultsComponent },
   { path: 'job/:id/:query', component: JobDetailsComponent },
   { path: '**', component: PageNotFoundComponent }

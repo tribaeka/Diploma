@@ -20,6 +20,7 @@ export class JobSearchInputComponent implements OnInit {
   activeOption: string;
   options: string[];
   @Input() isSubQueryEnabled: boolean;
+  @Input() target: string;
 
   constructor(
     private router: Router,
@@ -62,7 +63,15 @@ export class JobSearchInputComponent implements OnInit {
   }
 
   startSearch() {
-    this.router.navigate(['job/search', this.getUnionQuery()]);
+    switch (this.target) {
+      case 'job':
+        this.router.navigate(['job/search', this.getUnionQuery()]);
+        break;
+      case 'cv':
+        this.router.navigate(['cv/search', this.getUnionQuery()]);
+        break;
+      default: this.router.navigate(['job/search', this.getUnionQuery()]);
+    }
   }
 
   mouseEnterHandler() {

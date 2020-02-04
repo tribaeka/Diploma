@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import {DataTransferService} from '../services/data-transfer.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,18 +8,10 @@ import { NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  currentUrl: string;
-  constructor(private route: Router) { }
+  side: string;
+  constructor(private route: Router, private dataTransferService: DataTransferService) { }
 
   ngOnInit() {
-    this.route.events.subscribe((value: NavigationEnd) => this.currentUrl = value.url);
-  }
-
-  isJobSide() {
-    return this.currentUrl.includes('home/job');
-  }
-
-  isCvSide() {
-    return this.currentUrl.includes('home/cv');
+    this.dataTransferService.currentSide.subscribe(currentSide => this.side = currentSide);
   }
 }
