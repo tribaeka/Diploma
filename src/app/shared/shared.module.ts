@@ -8,6 +8,7 @@ import {AutocompleteFilterPipe} from './pipes/autocomplete-filter.pipe';
 import {AutocompleteBoldLetterPipe} from './pipes/autocomplete-bold-letter.pipe';
 import {SearchBuildsComponent} from './search-builds/search-builds.component';
 import {AppRoutingModule} from '../app-routing.module';
+import { LoginFormModalComponent } from './login-form-modal/login-form-modal.component';
 
 
 
@@ -19,7 +20,8 @@ import {AppRoutingModule} from '../app-routing.module';
     SkillSetComponent,
     AutocompleteFilterPipe,
     AutocompleteBoldLetterPipe,
-    SearchBuildsComponent
+    SearchBuildsComponent,
+    LoginFormModalComponent
   ],
   exports: [
     CompanySideBarComponent,
@@ -28,7 +30,8 @@ import {AppRoutingModule} from '../app-routing.module';
     SkillSetComponent,
     AutocompleteFilterPipe,
     AutocompleteBoldLetterPipe,
-    SearchBuildsComponent
+    SearchBuildsComponent,
+    LoginFormModalComponent
   ],
   imports: [
     CommonModule,

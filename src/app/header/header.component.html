@@ -15,6 +15,11 @@
         <a class="nav-link" routerLink="cv">For employers</a>
       </li>
     </ul>
-    <button class="btn btn-success rounded">Login</button>
+    <button class="btn-outline-success btn rounded mx-1"
+            data-toggle="modal"
+            data-target="#loginModal">
+      Login
+    </button>
   </div>
 </nav>
+<app-login-form-modal></app-login-form-modal>
