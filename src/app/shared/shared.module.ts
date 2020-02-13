@@ -9,6 +9,8 @@ import {AutocompleteBoldLetterPipe} from './pipes/autocomplete-bold-letter.pipe'
 import {SearchBuildsComponent} from './search-builds/search-builds.component';
 import {AppRoutingModule} from '../app-routing.module';
 import { LoginFormModalComponent } from './login-form-modal/login-form-modal.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import { RegistrationFormModalComponent } from './registration-form-modal/registration-form-modal.component';
 
 
 
@@ -21,7 +23,8 @@ import { LoginFormModalComponent } from './login-form-modal/login-form-modal.com
     AutocompleteFilterPipe,
     AutocompleteBoldLetterPipe,
     SearchBuildsComponent,
-    LoginFormModalComponent
+    LoginFormModalComponent,
+    RegistrationFormModalComponent
   ],
   exports: [
     CompanySideBarComponent,
@@ -31,11 +34,13 @@ import { LoginFormModalComponent } from './login-form-modal/login-form-modal.com
     AutocompleteFilterPipe,
     AutocompleteBoldLetterPipe,
     SearchBuildsComponent,
-    LoginFormModalComponent
+    LoginFormModalComponent,
+    RegistrationFormModalComponent
   ],
   imports: [
     CommonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }
