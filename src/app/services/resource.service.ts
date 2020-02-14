@@ -3,28 +3,27 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Experience} from '../model/experience';
 
+const API_URL = 'http://localhost:8080';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ResourceService {
-  private readonly hostUrl: string;
-  constructor(private http: HttpClient) {
-    this.hostUrl = 'http://localhost:8080';
-  }
+  constructor(private http: HttpClient) {}
 
   resolveImageResource(imagePath: string): string {
-    return this.hostUrl.concat(imagePath);
+    return API_URL.concat(imagePath);
   }
 
   getAutocompleteDictionary(): Observable<string[]> {
-    return this.http.get<string[]>(this.hostUrl + '/util/autocomplete');
+    return this.http.get<string[]>(API_URL + '/util/autocomplete');
   }
 
   getListOfExperiences(): Observable<Experience[]> {
-    return this.http.get<Experience[]>(this.hostUrl + '/util/experiences');
+    return this.http.get<Experience[]>(API_URL + '/util/experiences');
   }
 
   getPopularSearchBuilds(): Observable<Map<string, string>> {
-    return this.http.get<Map<string, string>>(this.hostUrl + '/util/search-builds/job');
+    return this.http.get<Map<string, string>>(API_URL + '/util/search-builds/job');
   }
 }

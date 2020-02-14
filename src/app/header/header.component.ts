@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {DataTransferService} from '../services/data-transfer.service';
 import {Router} from '@angular/router';
-import {AccountService} from '../services/account.service';
+import {AuthService} from '../services/auth.service';
+import {TokenStorageService} from '../services/token-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -10,9 +11,11 @@ import {AccountService} from '../services/account.service';
 })
 export class HeaderComponent implements OnInit {
   side: string;
+  isLoggedIn: boolean;
   constructor(private route: Router,
               private dataTransferService: DataTransferService,
-              private accountService: AccountService
+              private authService: AuthService,
+              private token: TokenStorageService
   ) { }
 
   ngOnInit() {

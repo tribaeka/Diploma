@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AccountService} from '../../services/account.service';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-registration-form-modal',
@@ -9,7 +9,8 @@ import {AccountService} from '../../services/account.service';
 })
 export class RegistrationFormModalComponent implements OnInit {
   registrationForm: FormGroup;
-  constructor(private accountService: AccountService, private fb: FormBuilder) {
+  @ViewChild('closeBtn', { static: false }) closeBtn: ElementRef;
+  constructor(private authService: AuthService, private fb: FormBuilder) {
     this.registrationForm = this.fb.group({
       username: ['', [ Validators.required, Validators.minLength(4) ] ],
       email: ['', [ Validators.email, Validators.minLength(4) ] ],
@@ -21,7 +22,7 @@ export class RegistrationFormModalComponent implements OnInit {
   }
 
   onSubmit() {
-    this.accountService.registration(this.registrationForm.value).subscribe(response => console.log(response));
-    // todo on success close modal
+    this.authService.registration(this.registrationForm.value)
+      .subscribe(response => this.closeBtn.nativeElement.click());
   }
 }

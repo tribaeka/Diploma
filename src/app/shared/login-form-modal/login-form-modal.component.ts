@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {AccountService} from '../../services/account.service';
+import {AuthService} from '../../services/auth.service';
+import {TokenStorageService} from '../../services/token-storage.service';
 
 @Component({
   selector: 'app-login-form-modal',
@@ -13,15 +14,16 @@ export class LoginFormModalComponent implements OnInit {
     password: new FormControl('')
   });
   @ViewChild('closeBtn', { static: false }) closeBtn: ElementRef;
-  constructor(private accountService: AccountService) { }
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    this.accountService.login(this.loginForm.value).subscribe(
-      response => {
-        this.accountService.setCurrentUser(response);
+    this.authService.login(this.loginForm.value).subscribe(
+      data => {
+        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveUser(data);
         this.closeBtn.nativeElement.click();
       },
       reject => console.log(reject)

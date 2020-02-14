@@ -3,16 +3,15 @@ import {HttpClient} from '@angular/common/http';
 import {Job} from '../model/job';
 import {Observable} from 'rxjs';
 
+const JOB_SEARCH_API_URL = 'http://localhost:8080/job/search?query=';
+
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
-  private readonly jobSearchUrl: string;
-  constructor(private http: HttpClient) {
-    this.jobSearchUrl = 'http://localhost:8080/job/search?query=';
-  }
+  constructor(private http: HttpClient) {}
 
   executeJobSearch(query: string): Observable<Job[]> {
-    return this.http.get<Job[]>(this.jobSearchUrl + encodeURIComponent(query));
+    return this.http.get<Job[]>(JOB_SEARCH_API_URL + encodeURIComponent(query));
   }
 }

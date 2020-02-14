@@ -12,6 +12,7 @@ import {JobSideModule} from './job-side/job-side.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
 import {SharedModule} from './shared/shared.module';
+import {authInterceptorProviders} from './services/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -28,10 +29,12 @@ import {SharedModule} from './shared/shared.module';
     ClickOutsideModule,
     CvSideModule,
     JobSideModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   providers: [
-    AppRoutingModule
+    AppRoutingModule,
+    authInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })

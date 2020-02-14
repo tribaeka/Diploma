@@ -15,7 +15,7 @@
         <a class="nav-link" routerLink="cv">For employers</a>
       </li>
     </ul>
-    <div *ngIf="!accountService.isLoggedIn()">
+    <div *ngIf="!token.isLoggedIn()">
       <button class="btn-success btn rounded mx-1"
               data-toggle="modal"
               data-target="#registrationModal">
@@ -27,10 +27,19 @@
         Login
       </button>
     </div>
-    <div *ngIf="accountService.isLoggedIn()">
-      Hello, {{ accountService.getUsername() }}
+    <div *ngIf="token.isLoggedIn()">
+      <div class="dropdown d-inline-block">
+        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Hello, {{ token.getUser().username }}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <button class="dropdown-item" type="button">Profile</button>
+          <button class="dropdown-item" type="button">My Cv</button>
+          <button class="dropdown-item" type="button">Settings</button>
+        </div>
+      </div>
       <button class="btn-outline-success btn rounded mx-1"
-              (click)="accountService.logout()">
+              (click)="token.logout()">
         Logout
       </button>
     </div>
