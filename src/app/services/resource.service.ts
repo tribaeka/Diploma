@@ -15,8 +15,12 @@ export class ResourceService {
     return API_URL.concat(imagePath);
   }
 
-  getAutocompleteDictionary(): Observable<string[]> {
-    return this.http.get<string[]>(API_URL + '/util/autocomplete');
+  getAutocompleteSearchDictionary(): Observable<string[]> {
+    return this.http.get<string[]>(API_URL + '/util/autocomplete/search');
+  }
+
+  getAutocompleteSkillsDictionary(): Observable<string[]> {
+    return this.http.get<string[]>(API_URL + '/util/autocomplete/skills');
   }
 
   getListOfExperiences(): Observable<Experience[]> {

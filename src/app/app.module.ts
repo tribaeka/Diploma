@@ -26,7 +26,6 @@ import {authInterceptorProviders} from './services/auth.interceptor';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ClickOutsideModule,
     CvSideModule,
     JobSideModule,
     SharedModule,

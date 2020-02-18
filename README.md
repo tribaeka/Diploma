@@ -1,3 +1,8 @@
+#How to start
+1. Run back-end server
+2. npm i
+3. npm run start
+
 # Diploma
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.

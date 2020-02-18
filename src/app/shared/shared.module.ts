@@ -11,6 +11,8 @@ import {AppRoutingModule} from '../app-routing.module';
 import { LoginFormModalComponent } from './login-form-modal/login-form-modal.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { RegistrationFormModalComponent } from './registration-form-modal/registration-form-modal.component';
+import { CreateCvFormModalComponent } from './create-cv-form-modal/create-cv-form-modal.component';
+import {ClickOutsideModule} from 'ng-click-outside';
 
 
 
@@ -24,7 +26,8 @@ import { RegistrationFormModalComponent } from './registration-form-modal/regist
     AutocompleteBoldLetterPipe,
     SearchBuildsComponent,
     LoginFormModalComponent,
-    RegistrationFormModalComponent
+    RegistrationFormModalComponent,
+    CreateCvFormModalComponent
   ],
   exports: [
     CompanySideBarComponent,
@@ -35,10 +38,12 @@ import { RegistrationFormModalComponent } from './registration-form-modal/regist
     AutocompleteBoldLetterPipe,
     SearchBuildsComponent,
     LoginFormModalComponent,
-    RegistrationFormModalComponent
+    RegistrationFormModalComponent,
+    CreateCvFormModalComponent
   ],
   imports: [
     CommonModule,
+    ClickOutsideModule,
     AppRoutingModule,
     ReactiveFormsModule
   ]

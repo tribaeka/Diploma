@@ -34,7 +34,7 @@ export class JobSearchInputComponent implements OnInit {
     });
     this.xIconPath = '../../assets/icons/x-circle.svg';
     this.xFilledIconPath = '../../assets/icons/x-circle-fill.svg';
-    resourceService.getAutocompleteDictionary().subscribe(data => this.options = data);
+    resourceService.getAutocompleteSearchDictionary().subscribe(data => this.options = data);
   }
 
   ngOnInit() {

@@ -11,6 +11,7 @@ import {AppRoutingModule} from '../app-routing.module';
 import {JobFilterComponent} from './job-filter/job-filter.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FiltersModule} from '../filters/filters.module';
+import {ClickOutsideModule} from 'ng-click-outside';
 
 
 
@@ -33,7 +34,8 @@ import {FiltersModule} from '../filters/filters.module';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    FiltersModule
+    FiltersModule,
+    ClickOutsideModule
   ]
 })
 export class JobSideModule { }

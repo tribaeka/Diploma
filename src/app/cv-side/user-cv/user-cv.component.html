@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-12 my-4">
+      <button class="btn btn-outline-success btn-lg btn-block"
+              data-toggle="modal"
+              data-target="#createCvModal">Add cv</button>
       <app-cv-list [cvList]="cvList"></app-cv-list>
     </div>
   </div>
 </div>
+<app-create-cv-form-modal></app-create-cv-form-modal>
