@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Job} from '../../model/job';
 import {JobService} from '../../services/job.service';
 import {ActivatedRoute} from '@angular/router';
+import {TokenStorageService} from '../../services/token-storage.service';
 
 @Component({
   selector: 'app-job-details',
@@ -10,7 +11,10 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class JobDetailsComponent implements OnInit {
   job: Job;
-  constructor(private jobService: JobService, private route: ActivatedRoute) { }
+  constructor(private jobService: JobService,
+              private route: ActivatedRoute,
+              private tokenStorage: TokenStorageService
+  ) { }
 
   ngOnInit() {
     // tslint:disable-next-line:radix

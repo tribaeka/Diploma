@@ -15,11 +15,12 @@ export class HeaderComponent implements OnInit {
   constructor(private route: Router,
               private dataTransferService: DataTransferService,
               private authService: AuthService,
-              private token: TokenStorageService
+              private tokenStorageService: TokenStorageService
   ) { }
 
   ngOnInit() {
     this.dataTransferService.currentSide.subscribe(currentSide => this.side = currentSide);
+
   }
 
   isCvSide() {
