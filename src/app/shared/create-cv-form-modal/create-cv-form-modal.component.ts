@@ -1,6 +1,9 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ResourceService} from '../../services/resource.service';
+import {CvService} from '../../services/cv.service';
+import {HttpClient} from '@angular/common/http';
+import {TokenStorageService} from '../../services/token-storage.service';
 
 @Component({
   selector: 'app-create-cv-form-modal',
@@ -12,11 +15,17 @@ export class CreateCvFormModalComponent implements OnInit {
   options: string[];
   showDropDown: boolean;
   activeOption: string;
-  uploadedFileName: string;
+  file: any;
+  @Output() onCreateCv = new EventEmitter();
   @ViewChild('fileInput', { static: false }) fileInput: ElementRef;
   @ViewChild('closeBtn', { static: false }) closeBtn: ElementRef;
-  constructor(private resourceService: ResourceService, private fb: FormBuilder) {
-    this.createCvForm = this.fb.group({
+  constructor(private resourceService: ResourceService,
+              private formBuilder: FormBuilder,
+              private cvService: CvService,
+              private tokenStorage: TokenStorageService,
+              private http: HttpClient
+  ) {
+    this.createCvForm = this.formBuilder.group({
       title: ['', Validators.minLength(1)],
       skills: [''],
       file: ['']
@@ -24,15 +33,30 @@ export class CreateCvFormModalComponent implements OnInit {
     resourceService.getAutocompleteSkillsDictionary().subscribe(data => this.options = data);
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   handleFileInputChanges() {
-    this.uploadedFileName = this.fileInput.nativeElement.files[0].name;
+    const selectedFile = this.fileInput.nativeElement.files[0];
+    this.file = selectedFile;
+    this.createCvForm.patchValue({
+      file: selectedFile.name
+    });
   }
 
   onSubmit() {
-    this.closeBtn.nativeElement.click();
+    const fd = new FormData();
+    fd.append('title', this.createCvForm.get('title').value);
+    fd.append('skills', this.createCvForm.get('skills').value);
+    if (this.file) {
+      fd.append('file', this.file, this.createCvForm.get('file').value);
+    }
+    fd.append('user', this.tokenStorage.getUser().id.toString());
+
+    this.http.post('http://localhost:8080/cv', fd)
+      .subscribe(response => {
+        this.closeBtn.nativeElement.click();
+        this.onCreateCv.emit();
+      });
   }
 
   openDropDown() {

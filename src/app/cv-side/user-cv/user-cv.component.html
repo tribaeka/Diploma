@@ -4,8 +4,12 @@
       <button class="btn btn-outline-success btn-lg btn-block"
               data-toggle="modal"
               data-target="#createCvModal">Add cv</button>
-      <app-cv-list [cvList]="cvList"></app-cv-list>
+      <div *ngIf="isLoading" class="d-flex justify-content-center align-items-center result-loader-wrapper">
+        <app-loader></app-loader>
+      </div>
+      <app-cv-list *ngIf="!isLoading"
+                   [cvList]="cvList"></app-cv-list>
     </div>
   </div>
 </div>
-<app-create-cv-form-modal></app-create-cv-form-modal>
+<app-create-cv-form-modal (onCreateCv)="updateCvList()"></app-create-cv-form-modal>

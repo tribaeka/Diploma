@@ -13,6 +13,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { RegistrationFormModalComponent } from './registration-form-modal/registration-form-modal.component';
 import { CreateCvFormModalComponent } from './create-cv-form-modal/create-cv-form-modal.component';
 import {ClickOutsideModule} from 'ng-click-outside';
+import {FileUploadModule} from 'ng2-file-upload';
 
 
 

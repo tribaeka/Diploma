@@ -11,7 +11,8 @@ import { UserCvComponent } from './user-cv/user-cv.component';
   declarations: [
   CvListComponent,
   CvListItemComponent,
-  UserCvComponent],
+  UserCvComponent
+  ],
   exports: [
   ],
   imports: [

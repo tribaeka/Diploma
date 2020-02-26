@@ -9,10 +9,18 @@ import {Cv} from '../../model/cv';
 })
 export class UserCvComponent implements OnInit {
   cvList: Cv[];
+  isLoading: boolean;
   constructor(private cvService: CvService) { }
 
   ngOnInit() {
-    this.cvService.gerUsersCv().subscribe(data => this.cvList = data);
+    this.updateCvList();
   }
 
+  updateCvList() {
+    this.isLoading = true;
+    this.cvService.gerUsersCv().subscribe(listOfCv => {
+      this.cvList = listOfCv;
+      this.isLoading = false;
+    });
+  }
 }

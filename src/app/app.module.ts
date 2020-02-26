@@ -13,6 +13,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HomeComponent } from './home/home.component';
 import {SharedModule} from './shared/shared.module';
 import {authInterceptorProviders} from './services/auth.interceptor';
+import {FileUploadModule} from 'ng2-file-upload';
 
 @NgModule({
   declarations: [

@@ -11,7 +11,8 @@ const CV_API_URL = 'http://localhost:8080/cv';
 })
 export class CvService {
 
-  constructor(private http: HttpClient, private tokenStorage: TokenStorageService) { }
+  constructor(private http: HttpClient, private tokenStorage: TokenStorageService) {
+  }
 
   gerUsersCv(): Observable<Cv[]> {
     return this.http.get<Cv[]>(CV_API_URL + '/user/' + this.tokenStorage.getUser().username);
@@ -31,5 +32,9 @@ export class CvService {
 
   deleteCv(cv: Cv): Observable<Cv[]> {
     return this.http.delete<Cv[]>(CV_API_URL + '/' + cv.cvId);
+  }
+
+  createCv(data): Observable<any> {
+    return this.http.post(CV_API_URL, data);
   }
 }
