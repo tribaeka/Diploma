@@ -14,6 +14,7 @@ import { RegistrationFormModalComponent } from './registration-form-modal/regist
 import { CreateCvFormModalComponent } from './create-cv-form-modal/create-cv-form-modal.component';
 import {ClickOutsideModule} from 'ng-click-outside';
 import {FileUploadModule} from 'ng2-file-upload';
+import { LineLoaderComponent } from './line-loader/line-loader.component';
 
 
 
@@ -28,7 +29,8 @@ import {FileUploadModule} from 'ng2-file-upload';
     SearchBuildsComponent,
     LoginFormModalComponent,
     RegistrationFormModalComponent,
-    CreateCvFormModalComponent
+    CreateCvFormModalComponent,
+    LineLoaderComponent
   ],
   exports: [
     CompanySideBarComponent,

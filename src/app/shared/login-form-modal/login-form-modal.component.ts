@@ -13,6 +13,7 @@ export class LoginFormModalComponent implements OnInit {
     username: new FormControl(''),
     password: new FormControl('')
   });
+  isLoading: boolean;
   @ViewChild('closeBtn', { static: false }) closeBtn: ElementRef;
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
 
@@ -20,13 +21,19 @@ export class LoginFormModalComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isLoading = true;
     this.authService.login(this.loginForm.value).subscribe(
       data => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
+        this.isLoading = false;
         this.closeBtn.nativeElement.click();
       },
-      reject => console.log(reject)
+      reject => {
+        console.log(reject);
+        this.isLoading = false;
+        // todo handle error on ui
+      }
     );
   }
 }
