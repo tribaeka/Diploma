@@ -1,13 +1,14 @@
 <div class="row py-4">
   <div class="col-12">
     <h5 class="text-success text-center">By Salary</h5>
-    <div class="list-group list-group-flush">
-      <button type="button"
-              class="list-group-item list-group-item-action bg-light pl-2"
-              *ngFor="let filterValue of salaryFilterList"
-              (click)="applySalaryFilter(filterValue)">
-        <span [class.text-success]="selectedFilterValue === filterValue">from {{filterValue}} USD</span>
-      </button>
+    <div class="input-group">
+      <select class="custom-select"
+              [ngModel]="selectedFilterValue"
+              (change)="applySalaryFilter($event)">
+        <option *ngFor="let filterValue of salaryFilterList"
+                [value]="filterValue">from {{filterValue}} USD
+        </option>
+      </select>
     </div>
   </div>
 </div>

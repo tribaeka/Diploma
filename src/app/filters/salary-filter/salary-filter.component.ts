@@ -17,10 +17,11 @@ export class SalaryFilterComponent implements OnInit, JobFilter {
   }
 
   ngOnInit() {
+    this.selectedFilterValue = 0;
   }
 
-  applySalaryFilter(salary: number) {
-    this.selectedFilterValue = salary;
+  applySalaryFilter(event: any) {
+    this.selectedFilterValue = event.target.selectedOptions[0].value;
     this.onApplySalaryFilter.emit(this);
   }
 
