@@ -4,6 +4,7 @@ import { CvListComponent } from './cv-list/cv-list.component';
 import { CvListItemComponent } from './cv-list-item/cv-list-item.component';
 import {SharedModule} from '../shared/shared.module';
 import { UserCvComponent } from './user-cv/user-cv.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 
@@ -17,7 +18,8 @@ import { UserCvComponent } from './user-cv/user-cv.component';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule
   ]
 })
 export class CvSideModule { }

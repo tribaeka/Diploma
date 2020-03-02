@@ -1,4 +1,4 @@
-<div class="card my-2">
+<div class="card my-2" @showItem [@hideItem]="isRemoved ? 'removed' : 'exist'">
   <img src="../../../assets/icons/x-mark.svg" class="x-mark-icon"
        width="24"
        height="24"

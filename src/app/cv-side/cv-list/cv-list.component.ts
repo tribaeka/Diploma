@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Cv} from '../../model/cv';
-import {CvService} from '../../services/cv.service';
 
 @Component({
   selector: 'app-cv-list',
@@ -9,7 +8,7 @@ import {CvService} from '../../services/cv.service';
 })
 export class CvListComponent implements OnInit {
   @Input() cvList: Cv[];
-  constructor(private cvService: CvService) { }
+  constructor() { }
 
   ngOnInit() {
   }
