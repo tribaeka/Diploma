@@ -1,5 +1,5 @@
 <div class="modal fade"
-     id="createCvModal"
+     id="{{ isUpdateModal ? 'update' : 'create' }}CvModal"
      tabindex="-1"
      role="dialog"
      aria-labelledby="registrationModalLabel"
@@ -8,7 +8,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title"
-            id="exampleModalLabel">Creating cv</h5>
+            id="exampleModalLabel">{{ isUpdateModal ? 'Update' : 'Create' }} cv</h5>
         <button type="button"
                 class="close"
                 data-dismiss="modal"
@@ -69,7 +69,7 @@
                   class="btn btn-secondary"
                   data-dismiss="modal">Cancel</button>
           <button type="submit"
-                  class="btn btn-primary">Create</button>
+                  class="btn btn-primary">{{ isUpdateModal ? 'Update' : 'Create' }}</button>
         </div>
       </form>
     </div>

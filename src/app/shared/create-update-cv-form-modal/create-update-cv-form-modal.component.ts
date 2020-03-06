@@ -1,29 +1,35 @@
-import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ResourceService} from '../../services/resource.service';
 import {CvService} from '../../services/cv.service';
 import {HttpClient} from '@angular/common/http';
 import {TokenStorageService} from '../../services/token-storage.service';
+import {Cv} from '../../model/cv';
+import {Skill} from '../../model/skill';
+import {DataTransferService} from '../../services/data-transfer.service';
 
 @Component({
-  selector: 'app-create-cv-form-modal',
-  templateUrl: './create-cv-form-modal.component.html',
-  styleUrls: ['./create-cv-form-modal.component.scss']
+  selector: 'app-create-update-cv-form-modal',
+  templateUrl: './create-update-cv-form-modal.component.html',
+  styleUrls: ['./create-update-cv-form-modal.component.scss']
 })
-export class CreateCvFormModalComponent implements OnInit {
+export class CreateUpdateCvFormModalComponent implements OnInit {
   createCvForm: FormGroup;
   options: string[];
   showDropDown: boolean;
   activeOption: string;
   file: any;
-  @Output() onCreateCv = new EventEmitter();
+  cvToUpdate: Cv;
+  @Input() isUpdateModal: boolean;
+  @Output() onComplete = new EventEmitter();
   @ViewChild('fileInput', { static: false }) fileInput: ElementRef;
   @ViewChild('closeBtn', { static: false }) closeBtn: ElementRef;
   constructor(private resourceService: ResourceService,
               private formBuilder: FormBuilder,
               private cvService: CvService,
               private tokenStorage: TokenStorageService,
-              private http: HttpClient
+              private http: HttpClient,
+              private dataTransferService: DataTransferService
   ) {
     this.createCvForm = this.formBuilder.group({
       title: ['', Validators.minLength(1)],
@@ -31,9 +37,27 @@ export class CreateCvFormModalComponent implements OnInit {
       file: ['']
     });
     resourceService.getAutocompleteSkillsDictionary().subscribe(data => this.options = data);
+    this.dataTransferService.currentCvToUpdate.subscribe(cv => {
+      this.cvToUpdate = cv;
+      if (this.cvToUpdate !== null) {
+        this.createCvForm = this.formBuilder.group({
+          title: [this.cvToUpdate.title],
+          skills: [this.cvToUpdate.cvSkillSet.map((skill: Skill) => skill.name)
+            .toString().split(',').join(' ')],
+          file: [this.cvToUpdate.fileName]
+        });
+      } else {
+        this.createCvForm = this.formBuilder.group({
+          title: ['', Validators.minLength(1)],
+          skills: [''],
+          file: ['']
+        });
+      }
+    });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   handleFileInputChanges() {
     const selectedFile = this.fileInput.nativeElement.files[0];
@@ -46,17 +70,24 @@ export class CreateCvFormModalComponent implements OnInit {
   onSubmit() {
     const fd = new FormData();
     fd.append('title', this.createCvForm.get('title').value);
-    fd.append('skills', this.createCvForm.get('skills').value);
+    fd.append('skills', this.createCvForm.get('skills').value
+      .replace(/\s{2,}/g, ' '));
     if (this.file) {
       fd.append('file', this.file, this.createCvForm.get('file').value);
     }
     fd.append('user', this.tokenStorage.getUser().id.toString());
+    if (this.isUpdateModal) {
+      this.http.put<Cv>('http://localhost:8080/cv/' + this.cvToUpdate.cvId, fd)
+        .subscribe(updatedCv => {
+          this.finalizeSuccess(updatedCv);
+        });
+    } else {
+      this.http.post('http://localhost:8080/cv', fd)
+        .subscribe(response => {
+          this.finalizeSuccess();
+        });
+    }
 
-    this.http.post('http://localhost:8080/cv', fd)
-      .subscribe(response => {
-        this.closeBtn.nativeElement.click();
-        this.onCreateCv.emit();
-      });
   }
 
   openDropDown() {
@@ -84,5 +115,12 @@ export class CreateCvFormModalComponent implements OnInit {
         skills: queryArray.join(' ') + ' '
       });
     }
+  }
+
+  finalizeSuccess(updatedCv?: Cv) {
+    this.dataTransferService.changeCvToUpdate(null);
+    this.closeBtn.nativeElement.click();
+    this.createCvForm.reset();
+    this.isUpdateModal ? this.onComplete.emit(updatedCv) : this.onComplete.emit();
   }
 }

@@ -1,7 +1,8 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {Cv} from '../../model/cv';
 import {CvService} from '../../services/cv.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {DataTransferService} from '../../services/data-transfer.service';
 
 @Component({
   selector: 'app-cv-list-item',
@@ -22,13 +23,17 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   ],
 })
 export class CvListItemComponent implements OnInit {
+  modalDataTarget: string;
   isRemoved = false;
   animationDurationOnHide = 400;
   @Input() cv: Cv;
   @Output() cvIsDeleted = new EventEmitter();
-  constructor(private cvService: CvService) { }
+  @ViewChild('updateBtn', { static: false }) updateBtn: ElementRef;
+
+  constructor(private cvService: CvService, private dataTransferService: DataTransferService) { }
 
   ngOnInit() {
+    this.modalDataTarget = '#' + this.cv.cvId + 'updateCvModal';
   }
 
   downloadCv() {
@@ -41,5 +46,10 @@ export class CvListItemComponent implements OnInit {
       this.cvService.deleteCv(this.cv)
         .subscribe(response => this.cvIsDeleted.emit(this.cv));
     }, this.animationDurationOnHide);
+  }
+
+  updateCv() {
+    this.dataTransferService.changeCvToUpdate(this.cv);
+    this.updateBtn.nativeElement.click();
   }
 }

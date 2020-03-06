@@ -13,7 +13,12 @@
     </div>
     <div class="my-2">
       <button (click)="downloadCv()" class="btn btn-primary m-1">Download</button>
-      <button class="btn btn-warning m-1">Update</button>
+      <button #updateBtn
+              class="btn btn-warning m-1"
+              (click)="updateCv()"
+              data-toggle="modal"
+              data-target="#updateCvModal">Update</button>
     </div>
   </div>
 </div>
+

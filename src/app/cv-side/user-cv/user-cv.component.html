@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-12 my-4">
       <button class="btn btn-outline-success btn-lg btn-block"
+              (click)="prepareModal()"
               data-toggle="modal"
               data-target="#createCvModal">Add cv</button>
       <div *ngIf="isLoading" class="d-flex justify-content-center align-items-center result-loader-wrapper">
@@ -12,4 +13,5 @@
     </div>
   </div>
 </div>
-<app-create-cv-form-modal (onCreateCv)="updateCvList()"></app-create-cv-form-modal>
+<app-create-update-cv-form-modal [isUpdateModal]="false" (onComplete)="updateCvList()">
+</app-create-update-cv-form-modal>

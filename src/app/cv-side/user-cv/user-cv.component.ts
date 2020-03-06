@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CvService} from '../../services/cv.service';
 import {Cv} from '../../model/cv';
+import {DataTransferService} from '../../services/data-transfer.service';
 
 @Component({
   selector: 'app-user-cv',
@@ -10,10 +11,14 @@ import {Cv} from '../../model/cv';
 export class UserCvComponent implements OnInit {
   cvList: Cv[];
   isLoading: boolean;
-  constructor(private cvService: CvService) { }
+  constructor(private cvService: CvService, private dataTransferService: DataTransferService) { }
 
   ngOnInit() {
     this.updateCvList();
+  }
+
+  prepareModal() {
+    this.dataTransferService.changeCvToUpdate(null);
   }
 
   updateCvList() {

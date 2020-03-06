@@ -11,7 +11,7 @@ import {AppRoutingModule} from '../app-routing.module';
 import { LoginFormModalComponent } from './login-form-modal/login-form-modal.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { RegistrationFormModalComponent } from './registration-form-modal/registration-form-modal.component';
-import { CreateCvFormModalComponent } from './create-cv-form-modal/create-cv-form-modal.component';
+import { CreateUpdateCvFormModalComponent } from './create-update-cv-form-modal/create-update-cv-form-modal.component';
 import {ClickOutsideModule} from 'ng-click-outside';
 import {FileUploadModule} from 'ng2-file-upload';
 import { LineLoaderComponent } from './line-loader/line-loader.component';
@@ -29,7 +29,7 @@ import { LineLoaderComponent } from './line-loader/line-loader.component';
     SearchBuildsComponent,
     LoginFormModalComponent,
     RegistrationFormModalComponent,
-    CreateCvFormModalComponent,
+    CreateUpdateCvFormModalComponent,
     LineLoaderComponent
   ],
   exports: [
@@ -42,7 +42,7 @@ import { LineLoaderComponent } from './line-loader/line-loader.component';
     SearchBuildsComponent,
     LoginFormModalComponent,
     RegistrationFormModalComponent,
-    CreateCvFormModalComponent
+    CreateUpdateCvFormModalComponent
   ],
   imports: [
     CommonModule,

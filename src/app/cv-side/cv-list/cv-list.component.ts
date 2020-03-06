@@ -16,4 +16,9 @@ export class CvListComponent implements OnInit {
   removeDeletedCv(deletedCv: Cv) {
     this.cvList = this.cvList.filter(item => item !== deletedCv);
   }
+
+  updateCvList(cvAfterUpdate: Cv) {
+    const target = this.cvList.find(item => item.cvId === cvAfterUpdate.cvId);
+    this.cvList[this.cvList.indexOf(target)] = cvAfterUpdate;
+  }
 }
