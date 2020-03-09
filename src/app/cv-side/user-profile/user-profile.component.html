@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row py-4 border border-secondary rounded">
+    <div class="col-2">
+      <img [src]="userImagePath" alt="" width="130" height="125">
+
+      <button type="button" data-toggle="modal" data-target="#uploadPhoto"
+              class="btn btn-secondary btn-sm d-block w-75 ml-1 mt-1">Add photo</button>
+    </div>
+    <div class="col-8">
+      <h4>Hello,<br>{{user.username | firstLetterToUpperCase}}</h4>
+      <br><br>
+      <button type="button" class="btn btn-primary mr-1">List of Cv</button>
+      <button type="button" class="btn btn-outline-primary mr-1">Settings</button>
+    </div>
+    <div class="col-2">
+      <div class="d-flex justify-content-end"><app-logout-button></app-logout-button></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <app-user-cv></app-user-cv>
+    </div>
+  </div>
+</div>

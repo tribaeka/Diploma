@@ -28,20 +28,10 @@
       </button>
     </div>
     <div *ngIf="tokenStorageService.isLoggedIn()">
-      <div class="dropdown d-inline-block">
-        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Hello, {{ tokenStorageService.getUser().username }}
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-          <button class="dropdown-item" type="button">Profile</button>
-          <a routerLink="user/cv/" class="dropdown-item" type="button">My Cv</a>
-          <button class="dropdown-item" type="button">Settings</button>
-        </div>
-      </div>
-      <button class="btn-outline-success btn rounded mx-1"
-              (click)="tokenStorageService.logout()">
-        Logout
-      </button>
+      <a routerLink="user/profile/" class="btn btn-light">
+        Hello, {{ tokenStorageService.getUser().username }}
+      </a>
+      <app-logout-button></app-logout-button>
     </div>
   </div>
 </nav>

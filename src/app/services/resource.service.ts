@@ -30,4 +30,12 @@ export class ResourceService {
   getPopularSearchBuilds(): Observable<Map<string, string>> {
     return this.http.get<Map<string, string>>(API_URL + '/util/search-builds/job');
   }
+
+  getDefaultUserImagePath() {
+    return API_URL + '/img/user_default.png';
+  }
+
+  getUserImagePath(imageName: string) {
+    return API_URL + '/img/user/' + imageName;
+  }
 }

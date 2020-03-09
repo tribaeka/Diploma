@@ -5,6 +5,7 @@ import { CvListItemComponent } from './cv-list-item/cv-list-item.component';
 import {SharedModule} from '../shared/shared.module';
 import { UserCvComponent } from './user-cv/user-cv.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 
@@ -12,7 +13,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
   declarations: [
   CvListComponent,
   CvListItemComponent,
-  UserCvComponent
+  UserCvComponent,
+  UserProfileComponent
   ],
   exports: [
   ],

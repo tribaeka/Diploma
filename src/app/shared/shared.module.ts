@@ -15,6 +15,8 @@ import { CreateUpdateCvFormModalComponent } from './create-update-cv-form-modal/
 import {ClickOutsideModule} from 'ng-click-outside';
 import {FileUploadModule} from 'ng2-file-upload';
 import { LineLoaderComponent } from './line-loader/line-loader.component';
+import { LogoutButtonComponent } from './logout-button/logout-button.component';
+import { FirstLetterToUpperCasePipe } from './pipes/first-letter-to-upper-case.pipe';
 
 
 
@@ -30,7 +32,9 @@ import { LineLoaderComponent } from './line-loader/line-loader.component';
     LoginFormModalComponent,
     RegistrationFormModalComponent,
     CreateUpdateCvFormModalComponent,
-    LineLoaderComponent
+    LineLoaderComponent,
+    LogoutButtonComponent,
+    FirstLetterToUpperCasePipe
   ],
   exports: [
     CompanySideBarComponent,
@@ -39,10 +43,12 @@ import { LineLoaderComponent } from './line-loader/line-loader.component';
     SkillSetComponent,
     AutocompleteFilterPipe,
     AutocompleteBoldLetterPipe,
+    FirstLetterToUpperCasePipe,
     SearchBuildsComponent,
     LoginFormModalComponent,
     RegistrationFormModalComponent,
-    CreateUpdateCvFormModalComponent
+    CreateUpdateCvFormModalComponent,
+    LogoutButtonComponent
   ],
   imports: [
     CommonModule,

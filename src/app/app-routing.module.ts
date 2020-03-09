@@ -6,6 +6,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {HomeComponent} from './home/home.component';
 import {CvListComponent} from './cv-side/cv-list/cv-list.component';
 import {UserCvComponent} from './cv-side/user-cv/user-cv.component';
+import {UserProfileComponent} from './cv-side/user-profile/user-profile.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,7 @@ const routes: Routes = [
   { path: 'cv', component: HomeComponent, data: {side: 'cv'} },
   { path: 'job/search/:query', component: JobSearchResultsComponent },
   { path: 'job/:id/:query', component: JobDetailsComponent },
-  { path: 'user/cv', component: UserCvComponent },
+  { path: 'user/profile', component: UserProfileComponent },
   { path: '**', component: PageNotFoundComponent }
   ];
 
