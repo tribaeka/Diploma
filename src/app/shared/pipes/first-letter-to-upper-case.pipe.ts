@@ -8,7 +8,6 @@ export class FirstLetterToUpperCasePipe implements PipeTransform {
   transform(value: string): string {
     const first = value[0].toUpperCase();
     const tail = value.slice(1);
-    console.log(tail);
     return first + tail;
   }
 

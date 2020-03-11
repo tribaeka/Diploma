@@ -44,7 +44,7 @@ export class CreateUpdateCvFormModalComponent implements OnInit {
           title: [this.cvToUpdate.title],
           skills: [this.cvToUpdate.cvSkillSet.map((skill: Skill) => skill.name)
             .toString().split(',').join(' ')],
-          file: [this.cvToUpdate.fileName]
+          file: [this.extractOriginalFileName(this.cvToUpdate.fileName)]
         });
       } else {
         this.createCvForm = this.formBuilder.group({
@@ -75,7 +75,7 @@ export class CreateUpdateCvFormModalComponent implements OnInit {
     if (this.file) {
       fd.append('file', this.file, this.createCvForm.get('file').value);
     }
-    fd.append('user', this.tokenStorage.getUser().id.toString());
+    fd.append('user', this.tokenStorage.getUser().userId.toString());
     if (this.isUpdateModal) {
       this.http.put<Cv>('http://localhost:8080/cv/' + this.cvToUpdate.cvId, fd)
         .subscribe(updatedCv => {
@@ -122,5 +122,9 @@ export class CreateUpdateCvFormModalComponent implements OnInit {
     this.closeBtn.nativeElement.click();
     this.createCvForm.reset();
     this.isUpdateModal ? this.onComplete.emit(updatedCv) : this.onComplete.emit();
+  }
+
+  extractOriginalFileName(fileName: string): string {
+    return fileName.split('!')[1];
   }
 }

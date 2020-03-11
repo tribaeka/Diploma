@@ -10,17 +10,25 @@ import {ResourceService} from '../../services/resource.service';
 })
 export class UserProfileComponent implements OnInit {
   user: User;
-  userImagePath: string;
+  defaultUserImagePath: string;
   constructor(private tokenStorageService: TokenStorageService, private resources: ResourceService) {
     this.user = tokenStorageService.getUser();
     if (this.user.imageName === null) {
-      this.userImagePath = this.resources.getDefaultUserImagePath();
+      this.defaultUserImagePath = this.resources.getDefaultUserImagePath();
     } else {
-      this.userImagePath = this.resources.getUserImagePath(this.user.imageName);
+      this.defaultUserImagePath = this.resources.getUserImagePath(this.user.imageName);
     }
   }
 
   ngOnInit() {
   }
 
+  userImageIsExist(): boolean {
+    return !!this.tokenStorageService.getUser().imageName;
+  }
+
+  getUserImageSource(): string {
+    const user = this.tokenStorageService.getUser();
+    return this.resources.getUserImagePath(user.imageName);
+  }
 }

@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row py-4 border border-secondary rounded">
     <div class="col-2">
-      <img [src]="userImagePath" alt="" width="130" height="125">
+      <img [src]="userImageIsExist() ? getUserImageSource() : defaultUserImagePath" alt="" width="130" height="125">
 
-      <button type="button" data-toggle="modal" data-target="#uploadPhoto"
+      <button type="button" data-toggle="modal" data-target="#uploadImageModal"
               class="btn btn-secondary btn-sm d-block w-75 ml-1 mt-1">Add photo</button>
     </div>
     <div class="col-8">
@@ -12,9 +12,6 @@
       <button type="button" class="btn btn-primary mr-1">List of Cv</button>
       <button type="button" class="btn btn-outline-primary mr-1">Settings</button>
     </div>
-    <div class="col-2">
-      <div class="d-flex justify-content-end"><app-logout-button></app-logout-button></div>
-    </div>
   </div>
   <div class="row">
     <div class="col-12">
@@ -22,3 +19,4 @@
     </div>
   </div>
 </div>
+<app-upload-image-modal></app-upload-image-modal>

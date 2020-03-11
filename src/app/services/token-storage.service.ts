@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {User} from '../model/user';
+import {Router} from '@angular/router';
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
@@ -9,10 +10,11 @@ const USER_KEY = 'auth-user';
 })
 export class TokenStorageService {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   logout() {
     window.sessionStorage.clear();
+    this.router.navigate(['']);
   }
 
   saveToken(token: string) {

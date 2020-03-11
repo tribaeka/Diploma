@@ -13,10 +13,10 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { RegistrationFormModalComponent } from './registration-form-modal/registration-form-modal.component';
 import { CreateUpdateCvFormModalComponent } from './create-update-cv-form-modal/create-update-cv-form-modal.component';
 import {ClickOutsideModule} from 'ng-click-outside';
-import {FileUploadModule} from 'ng2-file-upload';
 import { LineLoaderComponent } from './line-loader/line-loader.component';
 import { LogoutButtonComponent } from './logout-button/logout-button.component';
 import { FirstLetterToUpperCasePipe } from './pipes/first-letter-to-upper-case.pipe';
+import { UploadImageModalComponent } from './upload-image-modal/upload-image-modal.component';
 
 
 
@@ -34,7 +34,8 @@ import { FirstLetterToUpperCasePipe } from './pipes/first-letter-to-upper-case.p
     CreateUpdateCvFormModalComponent,
     LineLoaderComponent,
     LogoutButtonComponent,
-    FirstLetterToUpperCasePipe
+    FirstLetterToUpperCasePipe,
+    UploadImageModalComponent
   ],
   exports: [
     CompanySideBarComponent,
@@ -48,7 +49,8 @@ import { FirstLetterToUpperCasePipe } from './pipes/first-letter-to-upper-case.p
     LoginFormModalComponent,
     RegistrationFormModalComponent,
     CreateUpdateCvFormModalComponent,
-    LogoutButtonComponent
+    LogoutButtonComponent,
+    UploadImageModalComponent
   ],
   imports: [
     CommonModule,
