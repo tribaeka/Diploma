@@ -9,13 +9,26 @@
     <div class="col-8">
       <h4>Hello,<br>{{user.username | firstLetterToUpperCase}}</h4>
       <br><br>
-      <button type="button" class="btn btn-primary mr-1">List of Cv</button>
-      <button type="button" class="btn btn-outline-primary mr-1">Settings</button>
+      <button type="button"
+              (click)="setActiveTab(tabMap.cvList)"
+              [class.btn-primary]="isActive(tabMap.cvList)"
+              [class.btn-outline-primary]="!isActive(tabMap.cvList)"
+              class="btn mr-1">
+        List of Cv
+      </button>
+      <button type="button"
+              (click)="setActiveTab(tabMap.history)"
+              [class.btn-primary]="isActive(tabMap.history)"
+              [class.btn-outline-primary]="!isActive(tabMap.history)"
+              class="btn mr-1">
+        History
+      </button>
     </div>
   </div>
   <div class="row">
-    <div class="col-12">
-      <app-user-cv></app-user-cv>
+    <div class="col-12 px-0">
+      <app-user-cv *ngIf="isActive(tabMap.cvList)"></app-user-cv>
+<!--      <app-job-list *ngIf="isActive(tabMap.history)"></app-job-list>-->
     </div>
   </div>
 </div>

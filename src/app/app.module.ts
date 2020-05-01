@@ -6,14 +6,12 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { ClickOutsideModule} from 'ng-click-outside';
 import {CvSideModule} from './cv-side/cv-side.module';
 import {JobSideModule} from './job-side/job-side.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
 import {SharedModule} from './shared/shared.module';
 import {authInterceptorProviders} from './services/auth.interceptor';
-import {FileUploadModule} from 'ng2-file-upload';
 
 @NgModule({
   declarations: [

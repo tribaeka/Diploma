@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {TokenStorageService} from '../../services/token-storage.service';
 import {User} from '../../model/user';
 import {ResourceService} from '../../services/resource.service';
+import {HistoryService} from '../../services/history.service';
+import {Job} from '../../model/job';
 
 @Component({
   selector: 'app-user-profile',
@@ -11,16 +13,38 @@ import {ResourceService} from '../../services/resource.service';
 export class UserProfileComponent implements OnInit {
   user: User;
   defaultUserImagePath: string;
-  constructor(private tokenStorageService: TokenStorageService, private resources: ResourceService) {
+  activeTab: string;
+  tabMap = {
+    cvList: 'cvList',
+    history: 'history'
+  };
+  jobsFromHistory: Job[];
+  constructor(private tokenStorageService: TokenStorageService,
+              private resources: ResourceService,
+              private historyService: HistoryService) {
     this.user = tokenStorageService.getUser();
+  }
+
+  ngOnInit() {
+    this.activeTab = this.tabMap.cvList;
     if (this.user.imageName === null) {
       this.defaultUserImagePath = this.resources.getDefaultUserImagePath();
     } else {
       this.defaultUserImagePath = this.resources.getUserImagePath(this.user.imageName);
     }
+    this.historyService.getHistoryByUserId(this.user.userId).subscribe(jobs => {
+      console.log(jobs);
+      console.log(typeof jobs);
+      this.jobsFromHistory = jobs;
+    });
   }
 
-  ngOnInit() {
+  setActiveTab(tabName: string): void {
+    this.activeTab = tabName;
+  }
+
+  isActive(tabName: string): boolean {
+    return this.activeTab === tabName;
   }
 
   userImageIsExist(): boolean {

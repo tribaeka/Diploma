@@ -3,6 +3,7 @@ import {Job} from '../../model/job';
 import {JobService} from '../../services/job.service';
 import {ActivatedRoute} from '@angular/router';
 import {TokenStorageService} from '../../services/token-storage.service';
+import {HistoryService} from '../../services/history.service';
 
 @Component({
   selector: 'app-job-details',
@@ -13,13 +14,17 @@ export class JobDetailsComponent implements OnInit {
   job: Job;
   constructor(private jobService: JobService,
               private route: ActivatedRoute,
-              private tokenStorage: TokenStorageService
+              private tokenStorage: TokenStorageService,
+              private historyService: HistoryService
   ) { }
 
   ngOnInit() {
     // tslint:disable-next-line:radix
     const jobId = parseInt(this.route.snapshot.paramMap.get('id'));
-    this.jobService.getOneJob(jobId).subscribe(data => this.job = data);
+    this.jobService.getOneJob(jobId).subscribe(data => {
+      this.job = data;
+      this.historyService.addJobToHistory(this.job.jobId).subscribe();
+    });
   }
 
 }

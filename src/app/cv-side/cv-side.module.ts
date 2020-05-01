@@ -6,6 +6,7 @@ import {SharedModule} from '../shared/shared.module';
 import { UserCvComponent } from './user-cv/user-cv.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import {JobSideModule} from '../job-side/job-side.module';
 
 
 
@@ -21,7 +22,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
   imports: [
     CommonModule,
     SharedModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    JobSideModule
   ]
 })
 export class CvSideModule { }

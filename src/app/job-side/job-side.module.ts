@@ -26,7 +26,8 @@ import {ClickOutsideModule} from 'ng-click-outside';
     SimilarJobsComponent
   ],
   exports: [
-    JobSearchInputComponent
+    JobSearchInputComponent,
+    JobListComponent
   ],
   imports: [
     CommonModule,
