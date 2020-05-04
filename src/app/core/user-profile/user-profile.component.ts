@@ -4,6 +4,7 @@ import {User} from '../../model/user';
 import {ResourceService} from '../../services/resource.service';
 import {HistoryService} from '../../services/history.service';
 import {Job} from '../../model/job';
+import {JobHistory} from '../../model/job-history';
 
 @Component({
   selector: 'app-user-profile',
@@ -18,7 +19,7 @@ export class UserProfileComponent implements OnInit {
     cvList: 'cvList',
     history: 'history'
   };
-  jobsFromHistory: Job[];
+  jobsFromHistory: JobHistory[];
   constructor(private tokenStorageService: TokenStorageService,
               private resources: ResourceService,
               private historyService: HistoryService) {
@@ -33,8 +34,6 @@ export class UserProfileComponent implements OnInit {
       this.defaultUserImagePath = this.resources.getUserImagePath(this.user.imageName);
     }
     this.historyService.getHistoryByUserId(this.user.userId).subscribe(jobs => {
-      console.log(jobs);
-      console.log(typeof jobs);
       this.jobsFromHistory = jobs;
     });
   }

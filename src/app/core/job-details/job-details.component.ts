@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Job} from '../../model/job';
 import {JobService} from '../../services/job.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, ParamMap} from '@angular/router';
 import {TokenStorageService} from '../../services/token-storage.service';
 import {HistoryService} from '../../services/history.service';
 
@@ -12,6 +12,7 @@ import {HistoryService} from '../../services/history.service';
 })
 export class JobDetailsComponent implements OnInit {
   job: Job;
+  isSearchQueryExist: boolean;
   constructor(private jobService: JobService,
               private route: ActivatedRoute,
               private tokenStorage: TokenStorageService,
@@ -24,6 +25,9 @@ export class JobDetailsComponent implements OnInit {
     this.jobService.getOneJob(jobId).subscribe(data => {
       this.job = data;
       this.historyService.addJobToHistory(this.job.jobId).subscribe();
+    });
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.isSearchQueryExist = params.has('query');
     });
   }
 

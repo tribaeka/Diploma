@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {TokenStorageService} from './token-storage.service';
 import {Observable} from 'rxjs';
 import {API_URL} from './resource.service';
-import {Job} from '../model/job';
+import {JobHistory} from '../model/job-history';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class HistoryService {
     return this.http.post(API_URL + '/history/' + this.tokenStorage.getUser().userId, id);
   }
 
-  getHistoryByUserId(userId: number): Observable<Job[]> {
-    return this.http.get<Job[]>(API_URL + '/history/' + userId);
+  getHistoryByUserId(userId: number): Observable<JobHistory[]> {
+    return this.http.get<JobHistory[]>(API_URL + '/history/' + userId);
   }
 }
