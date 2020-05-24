@@ -19,8 +19,8 @@ import {UserProfileComponent} from './user-profile/user-profile.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HistoryListComponent } from './history-list/history-list.component';
 import { HistoryListItemComponent } from './history-list-item/history-list-item.component';
-
-
+import { JobPostComponent } from './job-post/job-post.component';
+import {AngularEditorModule} from '@kolkov/angular-editor';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,8 @@ import { HistoryListItemComponent } from './history-list-item/history-list-item.
     UserCvComponent,
     UserProfileComponent,
     HistoryListComponent,
-    HistoryListItemComponent
+    HistoryListItemComponent,
+    JobPostComponent
   ],
   exports: [
     JobSearchInputComponent,
@@ -50,7 +51,8 @@ import { HistoryListItemComponent } from './history-list-item/history-list-item.
     FormsModule,
     ReactiveFormsModule,
     FiltersModule,
-    ClickOutsideModule
+    ClickOutsideModule,
+    AngularEditorModule
   ]
 })
 export class CoreModule { }

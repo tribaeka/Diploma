@@ -3,6 +3,8 @@ import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Cv} from '../model/cv';
 import {TokenStorageService} from './token-storage.service';
+import {API_URL} from './resource.service';
+import {MessageResponse} from '../model/message-response';
 
 const CV_API_URL = 'http://localhost:8080/cv';
 
@@ -36,5 +38,9 @@ export class CvService {
 
   createCv(data): Observable<any> {
     return this.http.post(CV_API_URL, data);
+  }
+
+  sendCvToContact(formData: FormData): Observable<MessageResponse> {
+    return this.http.post<MessageResponse>(API_URL + '/util/sendJobRespond', formData);
   }
 }

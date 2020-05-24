@@ -4,7 +4,6 @@ export class Company {
   companyId: number;
   name: string;
   siteUrl: string;
-  size: string;
-  contactSet: Contact[];
+  contact: Contact;
   logoPath: string;
 }

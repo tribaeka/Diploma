@@ -10,8 +10,6 @@ import {TokenStorageService} from '../services/token-storage.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  side: string;
-  isLoggedIn: boolean;
   constructor(private route: Router,
               private dataTransferService: DataTransferService,
               private authService: AuthService,
@@ -19,15 +17,9 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.dataTransferService.currentSide.subscribe(currentSide => this.side = currentSide);
-
   }
 
-  isCvSide() {
-    return this.side === 'cv';
-  }
-
-  isJobSide() {
-    return this.side === 'job';
+  isRegisteredAccess(): boolean {
+    return this.tokenStorageService.isLoggedIn();
   }
 }

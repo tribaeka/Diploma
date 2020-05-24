@@ -24,8 +24,11 @@ export class TypeFilterComponent implements OnInit, JobFilter {
   filter(jobs: Job[]): Job[] {
     switch (this.filterValue) {
       case 'All': return jobs;
-      case 'Remote': return jobs.filter((item: Job) => item.location.name === 'Remote');
-      case 'Local': return jobs.filter((item: Job) => item.location.name !== 'Remote');
+      case 'Remote': return jobs.filter((item: Job) => this.isRemoteLocation(item.location));
     }
+  }
+
+  isRemoteLocation(location: string): boolean {
+    return (location === 'Remote') || (location === 'remote)');
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {User} from '../model/user';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, pipe, Subscription} from 'rxjs';
 
 const API_URL = 'http://localhost:8080/api/auth';
 
@@ -15,12 +15,12 @@ export class AuthService {
     return this.http.post<User>(API_URL + '/signin', loginData);
   }
 
-  registration(registrationData): Observable<any> {
-    return this.http.post<any>(API_URL + '/signup', this.addUserRoleToData(registrationData));
-  }
-
-  addUserRoleToData(formData) {
-    formData.role = [ 'user' ];
-    return formData;
+  registration(registrationData, role?: string): Observable<any> {
+    if (!!role) {
+      registrationData.role = [ role ];
+    } else {
+      registrationData.role = [ 'user' ];
+    }
+    return this.http.post<any>(API_URL + '/signup', registrationData);
   }
 }

@@ -3,15 +3,19 @@
   <div class=" px-4 border border-secondary rounded">
     <div class="row py-4">
       <div class="col-10">
-          <h2>{{job.title}}</h2>
-          <app-location-badge [location]="job.location"></app-location-badge>
-          <br>
-          <span>Required experience: {{job.experience.name}}</span>
+        <h2>{{job.title}}</h2>
+        <span>{{job.location}}</span>
+        <br>
+        <span>Required experience: {{job.experience}}</span>
         <hr>
       </div>
       <div class="col-2 d-flex justify-content-end">
         <div *ngIf="tokenStorage.isLoggedIn()">
-          <button class="btn-lg btn-success">To respond</button>
+          <button class="btn-lg btn-success"
+                  data-toggle="modal"
+                  data-target="#jobRespondModal">
+            To respond
+          </button>
         </div>
       </div>
     </div>
@@ -25,11 +29,9 @@
     </div>
   </div>
   <div *ngIf="isSearchQueryExist" class="row">
-    <div class="col-6">
+    <div class="col-12">
       <app-similar-jobs [jobToExclude]="job"></app-similar-jobs>
     </div>
-    <div class="col-6 d-flex justify-content-center">
-      <h4>On map</h4>
-    </div>
   </div>
+  <app-job-respond-modal [job]="job"></app-job-respond-modal>
 </div>

@@ -11,6 +11,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HomeComponent } from './home/home.component';
 import {SharedModule} from './shared/shared.module';
 import {authInterceptorProviders} from './services/auth.interceptor';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {authInterceptorProviders} from './services/auth.interceptor';
     HttpClientModule,
     CoreModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     AppRoutingModule,

@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {TokenStorageService} from '../../services/token-storage.service';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../../model/user';
+import {ResourceService} from '../../services/resource.service';
 
 @Component({
   selector: 'app-upload-image-modal',
@@ -16,7 +17,7 @@ export class UploadImageModalComponent implements OnInit {
   @ViewChild('closeBtn', { static: false }) closeBtn: ElementRef;
   constructor(private formBuilder: FormBuilder,
               private tokenStorage: TokenStorageService,
-              private http: HttpClient
+              private resource: ResourceService
   ) {
     this.uploadImageForm = this.formBuilder.group({
       file: ['']
@@ -39,7 +40,7 @@ export class UploadImageModalComponent implements OnInit {
     fd.append('file', this.file, this.uploadImageForm.get('file').value);
     fd.append('user', this.tokenStorage.getUser().userId.toString());
 
-    this.http.post<User>('http://localhost:8080/user/uploadImage', fd)
+    this.resource.uploadImageToUser(fd)
       .subscribe(updatedUser => {
         this.closeBtn.nativeElement.click();
         this.uploadImageForm.reset();

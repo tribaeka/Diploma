@@ -72,6 +72,7 @@ export class JobSearchInputComponent implements OnInit {
         break;
       default: this.router.navigate(['job/search', this.getUnionQuery()]);
     }
+    this.closeDropDown();
   }
 
   mouseEnterHandler() {

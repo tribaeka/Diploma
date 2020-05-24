@@ -41,6 +41,17 @@
                    placeholder="Enter email">
           </div>
           <div class="form-group">
+            <label>Phone:</label>
+            <input formControlName="phone"
+                   [class.is-valid]="registrationForm.get('phone').valid
+                   && registrationForm.get('phone').dirty"
+                   [class.is-invalid]="registrationForm.get('phone').invalid
+                   && registrationForm.get('phone').dirty"
+                   type="text"
+                   class="form-control"
+                   placeholder="Enter phone number">
+          </div>
+          <div class="form-group">
             <label>Password:</label>
             <input  formControlName="password"
                     [class.is-valid]="registrationForm.get('password').valid
