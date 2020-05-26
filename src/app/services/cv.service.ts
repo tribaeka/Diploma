@@ -3,25 +3,25 @@ import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Cv} from '../model/cv';
 import {TokenStorageService} from './token-storage.service';
-import {API_URL} from './resource.service';
 import {MessageResponse} from '../model/message-response';
-
-const CV_API_URL = 'http://localhost:8080/cv';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CvService {
 
+  apiUrl = environment.apiUrl;
+
   constructor(private http: HttpClient, private tokenStorage: TokenStorageService) {
   }
 
   gerUsersCv(): Observable<Cv[]> {
-    return this.http.get<Cv[]>(CV_API_URL + '/user/' + this.tokenStorage.getUser().username);
+    return this.http.get<Cv[]>(this.apiUrl + '/cv/user/' + this.tokenStorage.getUser().username);
   }
 
   downloadCv(cv: Cv) {
-    const urlForDownloading = CV_API_URL + '/download/' + cv.cvId;
+    const urlForDownloading = this.apiUrl + '/cv/download/' + cv.cvId;
 
     const link = document.createElement('a');
     link.setAttribute('target', '_blank');
@@ -33,14 +33,14 @@ export class CvService {
   }
 
   deleteCv(cv: Cv): Observable<Cv[]> {
-    return this.http.delete<Cv[]>(CV_API_URL + '/' + cv.cvId);
+    return this.http.delete<Cv[]>(this.apiUrl + '/cv/' + cv.cvId);
   }
 
   createCv(data): Observable<any> {
-    return this.http.post(CV_API_URL, data);
+    return this.http.post(this.apiUrl + '/cv', data);
   }
 
   sendCvToContact(formData: FormData): Observable<MessageResponse> {
-    return this.http.post<MessageResponse>(API_URL + '/util/sendJobRespond', formData);
+    return this.http.post<MessageResponse>(this.apiUrl + '/util/sendJobRespond', formData);
   }
 }

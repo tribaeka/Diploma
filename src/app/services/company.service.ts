@@ -2,21 +2,22 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Company} from '../model/company';
-import {API_URL} from './resource.service';
-import {Job} from '../model/job';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompanyService {
 
+  apiUrl = environment.apiUrl + '/company';
+
   constructor(private http: HttpClient) { }
 
   addCompany(companyData): Observable<Company> {
-    return this.http.post<Company>(API_URL + '/company', companyData);
+    return this.http.post<Company>(this.apiUrl, companyData);
   }
 
   addContactToCompany(contactData, companyId: number): Observable<Company> {
-    return this.http.post<Company>(API_URL + '/company/addContact/' + companyId, contactData);
+    return this.http.post<Company>(this.apiUrl + '/addContact/' + companyId, contactData);
   }
 }
