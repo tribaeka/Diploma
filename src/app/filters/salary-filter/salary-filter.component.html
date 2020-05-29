@@ -1,7 +1,7 @@
 <div class="row py-4">
   <div class="col-12">
-    <h5 class="text-success text-center">By Salary</h5>
     <div class="input-group">
+      <label class="filter-label">Salary:</label>
       <select class="custom-select"
               [ngModel]="selectedFilterValue"
               (change)="applySalaryFilter($event)">

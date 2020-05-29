@@ -12,10 +12,11 @@ export class ExperienceFilterComponent implements OnInit, JobFilter {
   @Output() onApplyExperienceFilter = new EventEmitter();
   listOfExperiences: number[];
   filterValue: number;
-  constructor(private resourceService: ResourceService) { }
+  constructor() { }
 
   ngOnInit() {
     this.listOfExperiences = [1, 2, 3, 4, 5];
+    this.filterValue = -1;
   }
 
   applyExperienceFilter(year: number) {
@@ -26,5 +27,15 @@ export class ExperienceFilterComponent implements OnInit, JobFilter {
   filter(jobs: Job[]): Job[] {
     if (this.filterValue === -1) { return  jobs; }
     return jobs.filter(job => job.experience === this.filterValue);
+  }
+
+  getDisplayedValue(value?: number): string {
+    const valueToDisplay = value || this.filterValue;
+    if (valueToDisplay === -1) {
+      return 'All';
+    } else {
+      const year = valueToDisplay === 1 ? 'year' : 'years';
+      return valueToDisplay + ' ' + year;
+    }
   }
 }

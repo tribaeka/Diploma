@@ -1,21 +1,25 @@
 <div class="row py-4">
   <div class="col-12">
-    <h5 class="text-success text-center">By Experience</h5>
-    <form>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="type" id="allExperience"
-               (click)="applyExperienceFilter(-1)" checked>
-        <label class="form-check-label" for="allExperience">
+    <div class="dropdown">
+      Experience:
+      <button class="btn btn-info dropdown-toggle"
+              type="button" id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false">
+        {{getDisplayedValue()}}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item"
+           (click)="applyExperienceFilter(-1)">
           All
-        </label>
+        </a>
+        <a class="dropdown-item"
+           *ngFor="let experience of listOfExperiences"
+           (click)="applyExperienceFilter(experience)">
+          {{getDisplayedValue(experience)}}
+        </a>
       </div>
-      <div class="form-check" *ngFor="let experience of listOfExperiences">
-        <input class="form-check-input" type="radio" name="type" id="{{experience}}"
-               (click)="applyExperienceFilter(experience)">
-        <label class="form-check-label" for="{{experience}}">
-          {{experience}}{{experience === 1 ? 'year' : 'years'}}
-        </label>
-      </div>
-    </form>
+    </div>
   </div>
 </div>

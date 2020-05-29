@@ -14,6 +14,7 @@ export class TypeFilterComponent implements OnInit, JobFilter {
   constructor() { }
 
   ngOnInit() {
+    this.filterValue = 'All';
   }
 
   applyTypeFilter(typeOfFilter: string) {

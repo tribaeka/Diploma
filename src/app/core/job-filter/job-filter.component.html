@@ -1,14 +1,10 @@
 <div class="row pl-5 my-2">
-  <div class="col-8 offset-2">
-    <app-salary-filter class="filter-bar-item"
-                       (onApplySalaryFilter)="applySalaryFilter($event)">
+  <div class="col-8 offset-2 bg-light border rounded">
+    <app-salary-filter (onApplySalaryFilter)="applySalaryFilter($event)">
     </app-salary-filter>
-    <app-type-filter class="filter-bar-item"
-                     (onApplyTypeFilter)="applyTypeFilter($event)">
+    <app-type-filter (onApplyTypeFilter)="applyTypeFilter($event)">
     </app-type-filter>
-    <app-experience-filter class="filter-bar-item"
-                           (onApplyExperienceFilter)="applyExperienceFilter($event)">
-
+    <app-experience-filter (onApplyExperienceFilter)="applyExperienceFilter($event)">
     </app-experience-filter>
   </div>
 </div>

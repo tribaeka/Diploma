@@ -1,19 +1,24 @@
 <div class="row py-4">
   <div class="col-12">
-    <h5 class="text-success text-center">By Remote</h5>
-    <form>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="type" id="allType" (click)="applyTypeFilter('All')" checked>
-        <label class="form-check-label" for="allType">
+    <div class="dropdown">
+      Remote:
+      <button class="btn btn-info dropdown-toggle"
+              type="button" id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false">
+        {{filterValue}}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item"
+           (click)="applyTypeFilter('All')">
           All
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="type" id="remoteType" (click)="applyTypeFilter('Remote')">
-        <label class="form-check-label" for="remoteType">
+        </a>
+        <a class="dropdown-item"
+           (click)="applyTypeFilter('Remote')">
           Remote
-        </label>
+        </a>
       </div>
-    </form>
+    </div>
   </div>
 </div>
